@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{%static 'shop/favicon.ico' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'shop/index.css' %}"
+    />
+    <style>
+      @media (max-width: 991px) {
+        .toggle {
+          position: relative;
+          width: 30px;
+          height: 30px;
+          background: url("{%static 'shop/menu.png'%}");
+          background-size: 30px;
+          background-position: center;
+          background-repeat: no-repeat;
+          filter: invert(1);
+          z-index: 11;
+          cursor: pointer;
+        }
+        .toggle.active {
+          position: fixed;
+          right: 20px;
+          background: url("{%static 'shop/close.png'%}");
+          background-size: 25px;
+          background-position: center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+        }
+      }
+    </style>
+    <title>CampusConnect : T-shirts</title>
+  </head>
+
+  <body>
+    <section class="heading">
+      <header>
+        <a href="#"
+          ><img src="{%static 'shop/logo.png'%}" class="logo" alt=""
+        /></a>
+        <div class="toggle" onclick="toggleMenu()"></div>
+        <ul class="navigation">
+          <li><a href="/">Home</a></li>
+          <li><a href="#merchandise">Merchandise</a></li>
+          <li><a href="/blogs">Blogs</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </header>
+    </section>
+
+    <section class="intro" style="height: 20vh"></section>
+    <!-- --------------Product Details---- -->
+    <section class="products-list">
+      {% for product, range, n in allProds %}
+      <section class="product">
+        {% for i in product %} {% ifequal i.category 'T-shirts' %}
+        <h2 class="product-category">{{product.0.subcategory}}</h2>
+        <div class="product-container">
+          <!-- -----------product cards------- -->
+          <div class="product-card">
+            <div class="product-image">
+              <span class="discount-tag">20% off</span>
+              <img src="/media/{{i.images}}" alt="" class="product-thumb" />
+              <a href="/productview/{{i.id}}"
+                ><button class="card-btn">Quick view</button></a
+              >
+            </div>
+            <div class="product-info">
+              <h2 class="product-brand">{{i.product_name}}</h2>
+              <p class="product-short-des">{{i.desc}}</p>
+              <span class="price">{{i.price}}</span
+              ><span class="actual-price">550/-</span>
+            </div>
+          </div>
+        </div>
+        {% endifequal %} {% endfor %}
+      </section>
+      {% endfor %}
+    </section>
+
+    <!-- --------------Footer------------ -->
+    <!-- --------------Footer------------ -->
+    <section class="footer">
+      <div class="footer_center">
+        <div class="logo">
+          <img src="{%static 'shop/logo-black.png'%}" alt="" />
+          <p>
+            Campus Connect is a centralised platform for all the information
+            regarding a college.
+          </p>
+        </div>
+        <div class="company">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="">Team</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms and Conditions</a></li>
+          </ul>
+        </div>
+        <div class="links">
+          <h3>Useful links</h3>
+          <ul>
+            <li><a href="/tshirts">Tshirts</a></li>
+            <li><a href="/hoodies">Hoodies</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="contact_us">
+          <h3>Contact Us</h3>
+          <a href="mailto: campus.connect.contact@gmail.com"
+            >campus.connect.contact@gmail.com</a
+          >
+          <ul>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/instagram.png'%}" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"><img src="{%static 'shop/discord.png'%}" alt="" /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/linkedin.png'%}" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/whatsapp.png'%}" alt=""
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>| © 2021 campusconnect.one | All Rights Reserved |</p>
+      </div>
+    </section>
+  </body>
+</html>

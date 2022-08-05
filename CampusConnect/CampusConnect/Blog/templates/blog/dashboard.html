@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusConnect : Blog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{%static 'blog/home.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{%static 'blog/dashboard.css' %}" />
+  <style>
+    a.logo {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="/" class="logo">CampusConnect</a>
+    <ul class="links-container">
+      <li class="link-item"><a href="/blogs" class="link">home</a></li>
+      <li class="link-item"><a href="/account/logout" class="link">logout</a></li>
+    </ul>
+  </nav>
+  <!-- Dashboard -->
+  <h1 class="heading">your blogs</h1>
+
+  <!-- blog section -->
+
+  <section class="blogs-section">
+    {% for i in post %}
+    <div class="blog-card">
+      {{post.body|safe}}
+      <img src="/media/{{i.Banner_image}}" class="blog-image" alt="">
+      <h1 class="blog-title">{{i.title}}</h1>
+      <p class="blog-overview">{{i.content|safe| truncatechars:600}}</p>
+      <br></br>
+      <a href="/blogs/blog/{{i.post_id}}" class="btn dark">read</a>
+      <a href="/blogs/editor/{{i.post_id}}" class="btn grey">edit</a>
+      <a href="/blogs/delete/{{i.post_id}}" class="btn danger">delete</a>
+    </div>
+    {% endfor %}
+  </section>
+
+  <script type="text/javascript" src="{%static 'blog/nav.js' %}"></script>
+</body>
+
+</html>

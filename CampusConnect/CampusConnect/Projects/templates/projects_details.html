@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'Clubs/all_clubs.css' %}"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+</head>
+<body>
+    <section class="clubs_section">
+      <div class="clubs-center">
+        <div class="card-section">
+          <div class="card">
+            <div class="profile-sidebar">
+              <img
+                src="/media/{{project.main_image}}"
+                alt=""
+                class="profile-img"
+              />
+              <ul class="social-list">
+                <li class="social-item">
+                  <a href="{{project.github}}" aria-label="instagram" class="social-link"
+                    ><i class="bx bxl-instagram"></i
+                  ></a>
+                </li>
+                <li class="social-item">
+                  <a href="{{project.deployed_link}}" aria-label="website" class="social-link"
+                    ><i class="bx bx-link-alt"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+            <a href="/account/profiles/{{project.user}}">By:-{{project.user}}</a>
+            <div class="profile-main">
+              <h2 class="profile-name">{{project.name}}</h2>
+              <p class="profile-body">
+                {{project.description}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</body>
+</html>

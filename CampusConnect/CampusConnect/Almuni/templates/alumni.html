@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'Alumni/alumni.css' %}"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>CampusConnect - AlmaConnect</title>
+    <style>
+      @media (max-width: 992px) {
+        section.heading header .toggle {
+          position: relative;
+          width: 30px;
+          height: 30px;
+          background: url("{%static 'Events/menu.png'%}");
+          background-size: 30px;
+          background-position: center;
+          background-repeat: no-repeat;
+          filter: invert(1);
+          z-index: 11;
+          cursor: pointer;
+        }
+        section.heading header .toggle.active {
+          position: fixed;
+          right: 20px;
+          background: url("{%static 'Events/close.png'%}");
+          background-size: 25px;
+          background-position: center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+        }
+        section.footer {
+          padding: 20px;
+        }
+        section.footer .footer_center {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        section.footer .copyright {
+          padding: 0;
+        }
+        section.events_page_section {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="heading">
+      <header>
+        <a href="#"
+          ><img src="{%static 'shop/logo.png'%}" class="logo" alt=""
+        /></a>
+        <div class="toggle" onclick="toggleMenu()"></div>
+        <ul class="navigation">
+          <li><a href="/">Home</a></li>
+          <li><a href="#merchandise">Merchandise</a></li>
+          <li><a href="/blogs">Blogs</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </header>
+    </section>
+
+    <!-- alumni section -->
+    <section class="alumni_page_section">
+      <div class="alumni_center">
+        <h1>AlmaConnect</h1>
+
+      </div>
+      <div class="alumni_join">
+        <div class="alumni_join_center">
+          <img src="{%static 'Alumni/graduation.svg'%}" alt="">
+          <article class="alumni_join_article">
+        <p>
+          College does not end with your graduation. The world is moving very
+          fast and to connect to the industry you need information. And we think
+          our alumni are the best source of guidance to propel you in the right
+          direction.
+        </p>
+        <button class="connect_btn"><a href="">Connect</a></button>
+          </article>
+        </div>
+      </div>
+      <div class="cards_center">
+        {% for i in almuni %}
+        <ul class="cards">
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_image">
+                <img src="/media/{{i.main_image}}" />
+              </div>
+              <div class="card_content">
+                <h2 class="card_title">{{i.name}}</h2>
+                <ul class="social-list">
+                  <li class="social-item">
+                    <a href="{{i.instagram}}" aria-label="instagram" class="social-link"
+                      ><i class="bx bxl-instagram"></i
+                    ></a>
+                  </li>
+                  <li class="social-item">
+                    <a href="{{i.linkedin}}" aria-label="website" class="social-link">
+                      <i class="bx bxl-linkedin"></i
+                    ></a>
+                  </li>
+                  <li class="social-item">
+                    <a href="{{i.mail}}" aria-label="email" class="social-link"
+                      ><i class="bx bx-envelope"></i
+                    ></a>
+                  </li>
+                </ul>
+                <div class="personal">
+                  <div class="company">{{i.company}}</div>
+                  <div class="occupation">{{i.designation}}</div>
+                  <div class="batch">{{i.branch_and_year}}</div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+       {% endfor %}
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="footer_center">
+        <div class="logo">
+          <img src="{%static 'shop/logo-black.png'%}" alt="" />
+          <p>
+            Campus Connect is a centralised platform for all the information
+            regarding a college.
+          </p>
+        </div>
+        <div class="company">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="">Team</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms and Conditions</a></li>
+          </ul>
+        </div>
+        <div class="links">
+          <h3>Useful links</h3>
+          <ul>
+            <li><a href="/tshirts">Tshirts</a></li>
+            <li><a href="/hoodies">Hoodies</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="contact_us">
+          <h3>Contact Us</h3>
+          <a href="mailto: campus.connect.contact@gmail.com"
+            >campus.connect.contact@gmail.com</a
+          >
+          <ul>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/instagram.png'%}" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"><img src="{%static 'shop/discord.png'%}" alt="" /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/linkedin.png'%}" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/whatsapp.png'%}" alt=""
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>| © 2021 campusconnect.one | All Rights Reserved |</p>
+      </div>
+    </section>
+
+    <script>
+      function toggleMenu() {
+        var menuToggle = document.querySelector(".toggle");
+        var navigation = document.querySelector(".navigation");
+        navigation.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+      }
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      const btns = document.querySelectorAll("[data-target]");
+
+      btns.forEach((modal_btn) => {
+        modal_btn.addEventListener("click", () => {
+          document.querySelector(modal_btn.dataset.target).style.display =
+            "block";
+        });
+      });
+
+      // Get the <span> element that closes the modal
+      var span = document.querySelectorAll(".close");
+      span.forEach((close) => {
+        close.addEventListener("click", () => {
+          document.querySelector(close.dataset.target).style.display = "none";
+        });
+      });
+
+      window.addEventListener("click", function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

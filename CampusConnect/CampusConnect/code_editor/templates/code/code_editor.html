@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.32.0/min/vs/editor/editor.main.css" integrity="sha512-VXXsro+AN5Zw6jR2gkN2zBmIoNWZLlmXKI6jhFYSjkEsA9wQIa0kjE175hhIfNZKh2YUWsm5HC6WOSsrW8fA5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.32.0/min/vs/editor/editor.main.min.css" integrity="sha512-YC7mqpdPT2MUIWey09QaNipQknPlDGhfgaiLHWcZH4PAX/DfjNrqzGfjB19kPMzUTwUADDPd2crn9NE5qIYVAQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+<script>var require = { paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.32.0/min/vs'}};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.32.0/min/vs/loader.min.js" integrity="sha512-O9SYDgWAM3bEzit1z6mkFd+dxKUplO/oB8UwYGAkg2Zy/WzDUQ2mYA/ysk3c0CxiXAN4u8T9JeZ0Ahk2Jj/33Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.32.0/min/vs/editor/editor.main.nls.min.js" integrity="sha512-RBJMO+2Jx4onKLqQIADPuWIVjoc7AJXsOht63iSKCPIxelX/+3SJAH1BKfmCBMUVJdsZPxNbLDQfje0QZMz75A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.32.0/min/vs/editor/editor.main.min.js" integrity="sha512-jZPNsMOQYgNetMwPkiyKtRhpsqelMGQ5GGl/wZ90SZIFBKlnGrp0AvJIQ16Jg2dXMuUGHOXF0oYhrc5eJfzeBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<div class="control-panel">
+        Select Language:
+        &nbsp; &nbsp;
+        <select id="languages" class="languages" onchange="changeLanguage()">
+            <option value="c"> C </option>
+            <option value="csharp"> C# </option>
+            <option value="cpp"> C++ </option>
+            <option value="java"> Java </option>
+            <option value="python"> Python </option>
+            <option value="ruby"> Ruby </option>
+            <option value="swift"> Swift </option>
+        </select>
+    </div>
+<pre id="CodeBlock" >
+def initialize(n):
+    for key in ['queen', 'row', 'col', 'nwtose', 'swtone']:
+        board[key] = {}
+    for i in range(n):
+        board['queen'][i] = -1
+        board['row'][i] = 0
+        board['col'][i] = 0
+    for i in range(-(n-1), n):
+        board['nwtose'][i] = 0
+    for i in range(2*n-1):
+        board['swtone'][i] = 0
+
+
+def printboard():
+    for row in sorted(board['queen'].keys()):
+        print((row, board['queen'][row]), end=" ")
+    print("")
+
+
+def free(i, j):
+    return(board['row'][i] == 0 and board['col'][j] == 0 and
+           board['nwtose'][j-i] == 0 and board['swtone'][j+i] == 0)
+
+
+def addqueen(i, j):
+    board['queen'][i] = j
+    board['row'][i] = 1
+    board['col'][j] = 1
+    board['nwtose'][j-i] = 1
+    board['swtone'][j+i] = 1
+
+
+def undoqueen(i, j):
+    board['queen'][i] = -1
+    board['row'][i] = 0
+    board['col'][j] = 0
+    board['nwtose'][j-i] = 0
+    board['swtone'][j+i] = 0
+
+
+def placequeen(i):
+    n = len(board['queen'].keys())
+    for j in range(n):
+        if free(i, j):
+            addqueen(i, j)
+            if i == n-1:
+                printboard()
+            else:
+                extendsoln = placequeen(i+1)
+            undoqueen(i, j)
+
+
+board = {}
+n = int(input("How many queens? "))
+initialize(n)
+if placequeen(0):
+    printboard()
+
+</pre>
+<script>
+    var codeContent = $.trim($('#CodeBlock').text());
+        $('#CodeBlock').html('');
+
+        var editorCodeBlock = monaco.editor.create(document.getElementById('CodeBlock'),{
+           value: codeContent,
+           language: "python",
+           theme: "vs-dark",
+           lineNumbers: 'on',
+           glyphMargin: false,
+           vertical: 'auto',
+           horizontal: 'auto',
+           verticalScrollbarSize: 10,
+             horizontalScrollbarSize: 10,
+           scrollBeyondLastLine: false,
+           readOnly: false,
+           automaticLayout: true,
+           minimap:{
+             enabled: true
+           },
+           lineHeight:19,
+        });
+       $("#CodeBlock").height(600);
+</script>
+</body>
+</html>

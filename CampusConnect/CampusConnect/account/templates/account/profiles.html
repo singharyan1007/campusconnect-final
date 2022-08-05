@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="{%static 'account/profile.css' %}" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="/media/{{profile.profile_image}}" alt="" />
+          </span>
+
+          <div class="text logo-text">
+            <span class="name">{{profile.username}}</span>
+            <span class="profession">{{profile.mjskl}}</span>
+          </div>
+        </div>
+
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
+
+      <div class="menu-bar">
+        <div class="menu">
+          <li class="search-box">
+            <i class="bx bx-search icon"></i>
+            <input type="text" placeholder="Search..." />
+          </li>
+
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="#home">
+                <i class="bx bx-home-alt icon"></i>
+                <span class="text nav-text">Home</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#projects">
+                <i class="bx bx-briefcase icon"></i>
+                <span class="text nav-text">Projects</span>
+              </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="#blogs">
+                <i class="bx bx-edit-alt icon"></i>
+                <span class="text nav-text">Blogs</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content">
+          <li class="">
+            <a href="/account/logout">
+              <i class="bx bx-log-out icon"></i>
+              <span class="text nav-text">Logout</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <div class="sun-moon">
+              <i class="bx bx-moon icon moon"></i>
+              <i class="bx bx-sun icon sun"></i>
+            </div>
+            <span class="mode-text text">Dark mode</span>
+
+            <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </div>
+      </div>
+    </nav>
+    <header class="header">
+      <div class="logo">
+        <div class="img-text">
+          <span class="image">
+            <img src="/media/{{profile.profile_image}}" alt="" />
+          </span>
+
+          <div class="text logo-text">
+            <span class="name">{{profile.username}}</span>
+          </div>
+        </div>
+      </div>
+      <nav class="nav">
+        <ul id="primary-navigation" class="nav-links flex">
+          <li class="home_links"><a href="#" class="nav__link">Home</a></li>
+          <li class="home_links">
+            <a href="#projects" class="nav__link">Projects</a>
+          </li>
+          <li class="home_links">
+            <a href="#skills" class="nav__link">Skills</a>
+          </li>
+          <li class="home_links">
+            <a href="#blogs" class="nav__link">Blogs</a>
+          </li>
+          <li class="home_links mode">
+            <div class="sun-moon">
+              <i class="bx bx-moon icon moon"></i>
+              <i class="bx bx-sun icon sun"></i>
+            </div>
+            <!-- <span class="mode-text text">Dark mode</span> -->
+
+            <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
+        </ul>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+      </nav>
+    </header>
+    <section class="home" id="home">
+      <div class="infoContainer">
+        <div class="devinfo">
+          <div class="hello">Hi, I am</div>
+          <div class="devname">{{profile.name}} {{profile.surname}}</div>
+          <div class="about">
+            {{profile.word1}}.{{profile.word2}}.{{profile.word3}}.
+          </div>
+          <div class="aboutmore">{{profile.description}}</div>
+          <div class="buttons">
+            <a href="{{profile.github}}" target="blank"
+              ><button>Github</button></a
+            >
+            <a href="{{profile.linkedin}}" target="blank"
+              ><button>LinkedIn</button></a
+            >
+          </div>
+        </div>
+        <img
+          src="/media/{{profile.image}}"
+          alt="{{profile.username}}"
+          srcset=""
+        />
+      </div>
+    </section>
+    
+    <section class="blogs">
+      <div class="blogs" id="blogs">
+        <h1 class="heading">Blogs...</h1>     
+        <div class="columns">
+          {% for i in post %}
+          <div class="col fade-in box">
+            <img src="/media/{{i.Banner_image}}" alt="" class="club_banner" />
+            <div class="club_info">
+              <h3>{{i.title}}</h3>
+              <p>{{i.content|safe| truncatechars:600}}</p>
+            </div>
+            <span class="button blog_btn"
+              ><a href="/blogs/blog/{{i.post_id}}">Read more</a></span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    <section class="blogs">
+      <div class="blogs" id="blogs">
+        <h1 class="heading">Projects...</h1>
+        <div class="columns">
+           {% for i in project %}
+          <div class="col fade-in box">
+            <img src="/media/{{i.main_image}}" alt="" class="club_banner" />
+            <div class="club_info">
+              <h3>{{i.name}}</h3>
+              <p>{{i.description|safe| truncatechars:600}}</p>
+            </div>
+            <span class="button blog_btn"
+              ><a href="/projects/project_details/{{i.name}}">Read more</a></span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    
+
+    <script>
+      const body = document.querySelector("body"),
+        sidebar = body.querySelector("nav"),
+        toggle = body.querySelector(".toggle"),
+        searchBtn = body.querySelector(".search-box"),
+        modeSwitch = body.querySelector(".toggle-switch"),
+        modeText = body.querySelector(".mode-text");
+
+      toggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+      });
+
+      searchBtn.addEventListener("click", () => {
+        sidebar.classList.remove("close");
+      });
+      window.onload = checktheme();
+      function checktheme() {
+        const localstoragetheme = localStorage.getItem("theme");
+        if (localstoragetheme === "dark" && localstoragetheme !== null) {
+          modeText.innerText = "Light mode";
+          body.classList.toggle("dark");
+        } else {
+          modeText.innerText = "Dark mode";
+        }
+      }
+
+      modeSwitch.addEventListener("click", () => {
+        body.classList.toggle("dark");
+        localStorage.setItem("theme", "dark");
+
+        if (body.classList.contains("dark")) {
+          modeText.innerText = "Light mode";
+        } else {
+          modeText.innerText = "Dark mode";
+        }
+      });
+
+      const navSlide = () => {
+        const burger = document.querySelector(".burger");
+        const nav = document.querySelector(".nav-links");
+        const navlinks = document.querySelectorAll(".nav-links li");
+
+        burger.addEventListener("click", () => {
+          //Toggle Nav
+
+          nav.classList.toggle("nav-active");
+
+          //Animate links
+          navlinks.forEach((link, index) => {
+            if (link.style.animation) {
+              link.style.animation = "";
+            } else {
+              link.style.animation = `navlinkFade 0.3s ease forwards ${
+                index / 7 + 1
+              }s`;
+            }
+          });
+          //Burger animation
+          burger.classList.toggle("toggle");
+        });
+      };
+      navSlide();
+    </script>
+  </body>
+</html>

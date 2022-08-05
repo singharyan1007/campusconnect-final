@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="{%static 'account/profileform.css' %}">
+    <title>CampusConnect-Profile Form</title>
+</head>
+<body>
+    <!-- multistep form -->
+<div id="svg_wrap"></div>
+<form action="/account/updateprofile/" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+ <h1>User profile</h1>
+<section>
+  <p>Fill out your details</p>
+  <div class="row">
+   <div class="small-12 medium-2 large-2 columns">
+     <div class="circle">
+       <img class="profile-pic" src="{%static 'account/profile-image.jpg'%}">
+
+     </div>
+     <div class="p-image">
+       <i class="fa fa-camera upload-button"></i>
+        <input class="file-upload" name="image" type="file" accept="image/*"/>
+     </div>
+  </div>
+</div>
+<p>
+  <input type="text" name="name" placeholder="Firstname" />
+</p>
+<p>
+
+  <input type="text" name="surname" placeholder="Surname" />
+</p>
+<p>
+  <input type="text" name="mjskl" placeholder="Your major skill Or Field of work">
+</p>
+  <p>
+<label for="github">Github:</label>
+    <input type="url" name="github" placeholder="Github link" id="github"/>
+  </p>
+  <p>
+    <label for="linkedin">LinkedIn:</label>
+    <input type="url" name="linkedin" id="linkedin" placeholder="LinkedIn link">
+  </p>
+</section>
+
+<section>
+  <p>
+    <label for="description"><p>Describe yourself in three words...</p></label>
+    <input type="text" name="description-1" id="description">
+    <input type="text" name="description-2" id="description">
+    <input type="text" name="description-3" id="description">
+  </p>
+    <label for="w3review"><p>Tell us a few words about yourself...</p></label>
+    <textarea id="w3review" name="w3review" rows="4" cols="50">
+    </textarea>
+  </p>
+</section>
+
+<section>
+  <p>Field of interest</p>
+<div class="interest-group">
+  
+    <label for="coding">Coding
+      <input type="checkbox" name="skills" id="coding" value="Coding">
+    </label>
+
+  
+    <label for="anime">Anime
+      <input type="checkbox" name="skills" id="anime" value="Anime">
+    </label>
+
+
+    <label for="digitalarts">Digital Arts
+      <input type="checkbox" name="skills" id="digitalarts" value="Digital Arts">
+    </label>
+
+
+    <label for="marketing">Marketing
+
+      <input type="checkbox" name="skills" id="marketing" value="Marketinkg">
+    </label>
+
+
+    <label for="uiux">Ui/Ux
+
+      <input type="checkbox" name="skills" id="uiux" value="UI/UX">
+    </label>
+
+
+    <label for="publicspeak">Public Speaking
+
+      <input type="checkbox" name="skills" id="publicspeak" value="Public Speaking">
+    </label>
+
+    <label for="crypto">Crptocurrency
+
+      <input type="checkbox" name="skills" id="crypto" value="Cryptocurrency">
+    </label>
+
+    <label for="stock">Stock Marketing
+
+      <input type="checkbox" name="skills" id="stock" value="Stock Marketing">
+    </label>
+
+    <label for="storytelling">Storytelling
+
+      <input type="checkbox" name="skills" id="storytelling" value="Storytelling">
+    </label>
+
+    <label for="entrepreneurship">Entrepreneurship
+
+      <input type="checkbox" name="skills" id="entrepreneurship" value="Entrepreneurship">
+    </label>
+
+ 
+</div>
+</section>
+
+  <div class="button" id="prev">&larr; Previous</div>
+<div class="button" id="next">Next &rarr;</div>
+<input type="submit" value="Submit" class="button submit-btn">
+</form>
+
+<script src="{%static 'account/profileform.js' %}"></script>
+</body>
+</html>

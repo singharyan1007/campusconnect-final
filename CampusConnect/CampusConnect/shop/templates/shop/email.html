@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{%static 'shop/email.css' %}"  />
+    <title>Document</title>
+</head>
+<body>
+    <div class="card-body">
+        <div class="card">
+
+            <div class="header__message">
+                <h1 class="message">Thank you for placing your order</h1>
+            </div>
+            <div class="body">
+                <p class="order__placed">Your order for  customised {{prods.name}} of quantity {{prods.qty}} has been placed successfully.</p>
+            </div>
+            <img src="/media/{{prods.image}}" alt="" class="order__image">
+            <h2 class="name">{{prods.name}}</h2>
+            <h3 class="cost">₹ {{prods.price}}/-</h3>
+            
+
+        </div>
+    </div>
+</body>
+</html>

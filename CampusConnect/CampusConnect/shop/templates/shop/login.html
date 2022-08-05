@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/x-icon" href="{%static 'shop/favicon.ico' %}">
+    <title>CampusConnect : LogIn</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'shop/form (1).css' %}"  />
+</head>
+<body>
+        <!-- -----------------Alert message----------- -->
+    {% for message in messages %}
+    <div class="alert-box">
+    <img src="{%static 'shop/error (1).png' %}" class="alert-img" alt="">
+    <p class="alert-msg">{{message}}</p>
+</div>
+        {% endfor %}
+<!-- ---------------------signUp------------------ -->
+    <img src="{%static 'shop/loader.gif' %}" alt="" class="loader" />
+<div class="container">
+    <h1 class="logo" >CampusConnect</h1>
+    <div>
+     <form action="/handellogin" method="POST"> {% csrf_token %}
+        <input type="text" autocomplete="off" id="username" placeholder="username" name ="username" required>
+        <input type="password" autocomplete="off" id="password" placeholder="password" name ="password" required>
+        <button class="submit-btn">Log in</button>
+       </form>
+    </div>
+    <a href="/Signup" class="link">don't have an account? create one</a>
+</div>
+<script type="text/javascript" src="{%static 'shop/form.js' %}"></script>
+</body>
+</html>

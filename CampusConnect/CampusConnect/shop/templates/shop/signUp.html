@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+      {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="icon" type="image/x-icon" href="{%static 'shop/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{%static 'shop/form (1).css' %}"  />
+    <title>CampusConnect : Create Account</title>
+  </head>
+  <body>
+    <!-- -----------------Alert message----------- -->
+{% for message in messages %}
+    <div class="alert-box">
+    <img src="{%static 'shop/error (1).png' %}" class="alert-img" alt="">
+    <p class="alert-msg">{{message}}</p>
+</div>
+        {% endfor %}
+
+<!-- ---------------------signUp------------------ -->
+    <img src="{%static 'shop/loader.gif' %}" alt="" class="loader" />
+<div class="container">
+    <h1 class="logo" >CampusConnect</h1>
+    <div>
+        <form action= "/handelsignup" method='post'>
+            {% csrf_token %}
+        <input type="text" autocomplete="off" id="username" name ="username" placeholder="name" required>
+        <input type="email" autocomplete="off" id="email" name ="email" placeholder="email" required>
+        <input type="password" autocomplete="off" id="password" name ="password" placeholder="password" required>
+        <input type="text" autocomplete="off" id="number" name ="number" placeholder="number" required>
+        <input type="checkbox" checked class="checkbox" id="terms-and-cond" required>
+        <label for="terms-and-cond">agree to our <a href="">terms and conditions</a></label>
+        <br>
+        <input type="checkbox" class="checkbox" id="notification">
+        <label for="notification">recieve upcoming offers and events mails</label>
+        <button class="submit-btn">create account</button>
+        </form>
+    </div>
+    <a href="/login" class="link">already have an account? Log in here</a>
+</div>
+<script type="text/javascript" src="{%static 'shop/form.js' %}"></script>
+  </body>
+</html>

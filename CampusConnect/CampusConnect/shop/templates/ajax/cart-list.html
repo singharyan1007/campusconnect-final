@@ -1,0 +1,38 @@
+{% load static %}
+      <div class="product-list">
+        <p class="section-heading">your cart</p>
+          <div class="cart">
+            {% if data %}
+        {% for productid,items in data.items %}
+        <div class="sn-product">
+        <img
+              src="{{items.image}}"
+              alt=""
+              class="sn-product-img"
+            />
+
+            <div class="sn-text">
+              <p class="sn-product-name">{{items.name}}</p>
+              <p class="sn-des">{{items.size}}</p>
+            </div>
+            <div class="item-counter">
+              <button class="counter-btn decrement" id="minus" data-item="{{productid}}">-</button>
+              <p class="item-count" id="count">{{items.qty}}</p>
+              <button class="counter-btn increment" id="plus" data-item="{{productid}}">+</button>
+            </div>
+            <p class="sn-price">{% widthratio items.price 1 items.qty %}/-</p>
+          <button class="sn-delete-btn" data-item="{{productid}}"></button>
+            </div>
+        {% endfor %}
+            {% else %}
+            <p><img src="{%static 'shop/emptycart.jpeg' %}"></p>
+            {% endif %}
+      </div>
+      </div>
+      <div class="checkout-section">
+        <div class="checkout-box">
+          <p class="text">your total bill</p>
+          <h1 class="bill"><span id="totalprice"></span>{{total}}/- </h1>
+          <a href="/checkout" class="checkout-btn">checkout</a>
+        </div>
+      </div>

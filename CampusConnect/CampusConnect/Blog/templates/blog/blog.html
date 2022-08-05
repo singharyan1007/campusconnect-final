@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect : Blog </title>
+
+    <link rel="stylesheet" type="text/css" href="{%static 'blog/home.css' %}"  />
+    <link rel="stylesheet" type="text/css" href="{%static 'blog/editor.css' %}"  />
+    <link rel="stylesheet" type="text/css" href="{%static 'blog/blog.css' %}"  />
+    <style>
+    a.logo{
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    </style>
+    
+    </head>
+    <body>
+    
+        <nav class="navbar">
+            <a href="/" class="logo">CampusConnect</a>
+        <ul class="links-container">
+            <li class="link-item"><a href="/blogs" class="link">home</a></li>
+            {% if user.is_authenticated %}
+            <li class="link-item"><a href="/blogs/dashboard" class="link">Dashboard</a></li>
+            <li class="link-item"><a href="/account/logout" class="link">Logout</a></li>
+            {% else %}
+             <li class="link-item"><a href="/account/login" class="link">login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="banner">
+        <img src="/media/{{post.Banner_image}}" class="banner_image">
+    </div>
+
+    <div class="blog">
+        {{post.body|safe}}
+        <h1 class="title">{{post.title}}</h1>
+        <p class="published"><span>published at - {{post.pub_date}}             written by:- {{post.user}}</span></p>
+        <div class="fb-like" data-href="http://127.0.0.1:8000/blogs/blog/{{post.post_id}}" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+        <div class="article">
+            {{post.content|safe}}
+        </div>
+        <div class="fb-comments" data-href="http://127.0.0.1:8000/blogs/blog/{{post.post_id}}" data-width="" data-numposts="6"></div>
+    </div>
+
+
+    <br></br>
+    <br></br>
+    <!-- blog section -->
+    {% if more %}
+    <h1 class="sub-heading">Read more</h1>
+    <section class="blogs-section">
+        <div class="blog-card">
+            <img src="/media/{{more.Banner_image}}" class="blog-image" alt="">
+            <h1 class="blog-title">{{more.title}}</h1>
+            <p class="blog-overview">{{i.content|safe| truncatechars:30}}</p>
+            <a href="/blogs/blog/{{more.post_id}}" class="btn dark">read</a>
+        </div>
+    </section>
+  
+    {% endif %}
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v12.0" nonce="uwEsMZcX"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v12.0" nonce="6N3kRJ7H"></script>
+    <script type="text/javascript" src="{%static 'blog/home.js' %}"></script>
+    <script type="text/javascript" src="{%static 'blog/blog.js' %}"></script>
+    {% if user.is_authenticated %}
+    <script type="text/javascript" src="{%static 'blog/nav.js' %}"></script>
+    {% endif %}
+
+</body>
+</html>

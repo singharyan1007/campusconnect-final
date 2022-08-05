@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect : Blog Editor</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'blog/home.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{%static 'blog/editor.css' %}" />
+
+</head>
+
+<body>
+    <form action="/blogs/editor/{{post.post_id}}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="banner"><img src="/media/{{post.Banner_image}}" class="banner">
+            <input hidden type='file' name='banner' id="banner-upload" accept="image/*" >
+            <label for="banner-upload" class="banner-upload-btn"><img src="{%static 'blog/upload.png' %}"
+                    alt="upload banner" id="upload-button"></label>
+        </div>
+        <div class="blog">
+            <input type="text" class="title" name="title" value="{{post.title}}"></input>
+            {{form.media}}
+            {{form.as_p}}
+        </div>
+        <div class="blog-options">
+            <button class="btn dark publish-btn">publish</button>
+        </div>
+    </form>
+
+
+</body>
+
+</html>

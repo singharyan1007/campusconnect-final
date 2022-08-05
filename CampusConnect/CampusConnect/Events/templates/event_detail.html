@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'Clubs/all_clubs.css' %}"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+</head>
+<body>
+    <section class="clubs_section">
+      <div class="clubs-center">
+        <div class="card-section">
+          <div class="card">
+            <div class="profile-sidebar">
+              <img
+                src="/media/{{event.main_image}}"
+                alt=""
+                class="profile-img"
+              />
+              <a href="/clubs">Organised by:- {{event.organiser}}</a>
+              date:- {{event.date}}
+            </div>
+            <div class="profile-main">
+              <h2 class="profile-name">{{event.name}}</h2>
+              <p class="profile-body">
+                {{event.description}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <title>Projects - CampusConnect</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'Projects/projects.css' %}"
+    />
+    <style>
+      @media (max-width: 992px) {
+        section.heading header .toggle {
+          position: relative;
+          width: 30px;
+          height: 30px;
+          background: url("{%static 'Events/menu.png'%}");
+          background-size: 30px;
+          background-position: center;
+          background-repeat: no-repeat;
+          filter: invert(1);
+          z-index: 11;
+          cursor: pointer;
+        }
+        section.heading header .toggle.active {
+          position: fixed;
+          right: 20px;
+          background: url("{%static 'Events/close.png'%}");
+          background-size: 25px;
+          background-position: center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+        }
+        section.footer {
+          padding: 20px;
+        }
+        section.footer .footer_center {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        section.footer .copyright {
+          padding: 0;
+        }
+        section.events_page_section{
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="heading">
+      <header>
+        <a href="/"
+          ><img src="{%static 'shop/logo.png'%}" class="logo" alt=""
+        /></a>
+        <div class="toggle" onclick="toggleMenu()"></div>
+        <ul class="navigation">
+          <li><a href="/">Home</a></li>
+          <li><a href="#merchandise">Merchandise</a></li>
+          <li><a href="/blogs">Blogs</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </header>
+    </section>
+    </section>
+    <section class="events_page_section">
+      <div class="events_center">
+        <h1>Take a look at these great Projects.</h1>
+        <p>
+          Builduing Projects is a great way to practice and put your knowledge to test.
+          lets have a look at the projects that students took up and built.
+        </p>
+      </div>
+      <div class="cards_center">
+        <ul class="cards">
+          {% for i in project %}
+          <li class="cards_item">
+            <div class="card">
+              <div class="card_image">
+                <img src="/media/{{i.main_image}}" />
+              </div>
+              <div class="card_content">
+                <h2 class="card_title">{{i.name}}</h2>
+                <p class="card_text">
+                  {{i.description}}
+                </p>
+                <div class="buttons">
+                
+                  <a href="/projects/project_details/{{i.name}}"><button
+                    class="btn card_btn modal_btn"
+                    id="myBtn"
+                    type="button"
+                  >
+                    View details >
+                  </button></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close" id="close" data-target="#myModal">&times;</span>
+          <div class="modal_card">
+            <div class="modal_image">
+              <img src="/media/{{i.main_image}}" />
+            </div>
+            < class="modalcard_content">
+              <h1 class="modal_title">{{i.name}}</h1>
+              <p class="modal_text">
+                {{i.description}}
+              </p>
+              <p class="organiser" href="{{i.github}}">Github link</p>
+              <p class="modal_date"href="{{i.github}}">Deployed link</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="footer_center">
+        <div class="logo">
+          <img src="{%static 'shop/logo-black.png'%}" alt="" />
+          <p>
+            Campus Connect is a centralised platform for all the information
+            regarding a college.
+          </p>
+        </div>
+        <div class="company">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="">Team</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms and Conditions</a></li>
+          </ul>
+        </div>
+        <div class="links">
+          <h3>Useful links</h3>
+          <ul>
+            <li><a href="/tshirts">Tshirts</a></li>
+            <li><a href="/hoodies">Hoodies</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="contact_us">
+          <h3>Contact Us</h3>
+          <a href="mailto: campus.connect.contact@gmail.com"
+            >campus.connect.contact@gmail.com</a
+          >
+          <ul>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/instagram.png'%}" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"><img src="{%static 'shop/discord.png'%}" alt="" /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/linkedin.png'%}" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/whatsapp.png'%}" alt=""
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>| © 2021 campusconnect.one | All Rights Reserved |</p>
+      </div>
+    </section>
+    <script>
+      function toggleMenu() {
+        var menuToggle = document.querySelector(".toggle");
+        var navigation = document.querySelector(".navigation");
+        navigation.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+      }
+      // Get the modal
+var modal = document.getElementById("myModal");
+
+    var modal = document.getElementById("myModal");
+
+      const btns = document.querySelectorAll("[data-target]");
+
+      btns.forEach((modal_btn) => {
+        modal_btn.addEventListener("click", () => {
+          document.querySelector(modal_btn.dataset.target).style.display="block";
+        });
+      });
+
+      // Get the <span> element that closes the modal
+      var span = document.querySelectorAll(".close");
+      span.forEach((close)=>{
+        close.addEventListener('click',()=>{
+          document.querySelector(close.dataset.target).style.display="none"
+        })
+      })
+
+window.addEventListener('click',function(event){
+  if(event.target==modal){
+    modal.style.display='none'
+  }
+})
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{%static 'shop/favicon.ico' %}"
+    />
+
+    <link rel="stylesheet" type="text/css" href="{%static 'shop/cart.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%static 'shop/index.css' %}"
+    />
+    <style>
+              @media (max-width:991px){
+                  .toggle {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        background: url("{%static 'shop/menu.png'%}");
+        background-size: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: invert(1);
+        z-index: 11;
+        cursor: pointer;
+      }
+      .toggle.active {
+        position: fixed;
+        right: 20px;
+        background: url("{%static 'shop/close.png'%}");
+        background-size: 25px;
+        background-position: center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+    }
+    </style>
+    <title>CampusConnect : Cart</title>
+  </head>
+  <body>
+    <section class="heading">
+      <header>
+        <a href="#"
+          ><img src="{%static 'shop/logo.png'%}" class="logo" alt=""
+        /></a>
+        <div class="toggle" onclick="toggleMenu()"></div>
+        <ul class="navigation">
+          <li><a href="/">Home</a></li>
+          <li><a href="#merchandise">Merchandise</a></li>
+          <li><a href="/blogs">Blogs</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </header>
+    </section>
+    <section class="intro" style="height: 20vh"></section>
+    <div class="cart-section" id="cartlist">
+      <div class="product-list">
+        <p class="section-heading">your cart</p>
+        <div class="cart">
+          {% if data %} {% for productid,items in data.items %}
+          <div class="sn-product">
+            <img src="{{items.image}}" alt="" class="sn-product-img" />
+
+            <div class="sn-text">
+              <p class="sn-product-name">{{items.name}}</p>
+              <p class="sn-des">{{items.size}}</p>
+            </div>
+            <div class="item-counter">
+              <button
+                class="counter-btn decrement"
+                id="minus"
+                data-item="{{productid}}"
+              >
+                -
+              </button>
+              <p class="item-count" id="count">{{items.qty}}</p>
+              <button
+                class="counter-btn increment"
+                id="plus"
+                data-item="{{productid}}"
+              >
+                +
+              </button>
+            </div>
+            <p class="sn-price">{% widthratio items.price 1 items.qty %}/-</p>
+            <button class="sn-delete-btn" data-item="{{productid}}">
+              <img src="{%static 'shop/error (1).png' %}" alt="" />
+            </button>
+          </div>
+          {% endfor %} {% else %}
+          <img class="emptyimg" src="{%static 'shop/emptycart.jpeg' %}" />
+          {% endif %}
+        </div>
+      </div>
+      <div class="checkout-section">
+        <div class="checkout-box">
+          <p class="text">your total bill</p>
+          <h1 class="bill"><span id="totalprice"></span>{{total}}/-</h1>
+          <a href="/checkout" class="checkout-btn">checkout</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="footer">
+      <div class="footer_center">
+        <div class="logo">
+          <img src="{%static 'shop/logo-black.png'%}" alt="" />
+          <p>
+            Campus Connect is a centralised platform for all the information
+            regarding a college.
+          </p>
+        </div>
+        <div class="company">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="">Team</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms and Conditions</a></li>
+          </ul>
+        </div>
+        <div class="links">
+          <h3>Useful links</h3>
+          <ul>
+            <li><a href="/tshirts">Tshirts</a></li>
+            <li><a href="/hoodies">Hoodies</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="contact_us">
+          <h3>Contact Us</h3>
+          <a href="mailto: campus.connect.contact@gmail.com"
+            >campus.connect.contact@gmail.com</a
+          >
+          <ul>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/instagram.png'%}" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"><img src="{%static 'shop/discord.png'%}" alt="" /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/linkedin.png'%}" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/whatsapp.png'%}" alt=""
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>| © 2021 campusconnect.one | All Rights Reserved |</p>
+      </div>
+    </section>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+      $(document).on("click", ".sn-delete-btn", function () {
+        var Pid = $(this).attr("data-item");
+        $.ajax({
+          url: "/delete-from-cart",
+          data: {
+            id: Pid,
+          },
+          datatype: "json",
+          success: function (res) {
+            $("#cartlist").html(res.data);
+          },
+        });
+      });
+      $(document).on("click", ".decrement", function () {
+        var Pid = $(this).attr("data-item");
+        var val = $(this).attr("id");
+        $.ajax({
+          url: "/update-cart",
+          data: {
+            id: Pid,
+            val: val,
+          },
+          datatype: "json",
+          success: function (res) {
+            $("#cartlist").html(res.data);
+          },
+        });
+      });
+      $(document).on("click", ".increment", function () {
+        var Pid = $(this).attr("data-item");
+        var val = $(this).attr("id");
+        $.ajax({
+          url: "/update-cart",
+          data: {
+            id: Pid,
+            val: val,
+          },
+          datatype: "json",
+          success: function (res) {
+            $("#cartlist").html(res.data);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
