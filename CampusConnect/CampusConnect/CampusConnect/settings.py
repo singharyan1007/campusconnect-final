@@ -13,7 +13,7 @@ import os
 import os.path
 from pathlib import Path
 from django.contrib.messages import constants as messages
-
+import MySQLdb
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -94,15 +94,12 @@ WSGI_APPLICATION = 'CampusConnect.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'campusconnect',
-        'USER' : 'root',
-        'PASSWORD': 'aryan@1017',
+        'USER' : 'postgres',
+        'PASSWORD': 'Kartik@142',
         'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-              "init_command": "SET foreign_key_checks = 0;",
-        },
+        'PORT': '5432',
     }
 }
 

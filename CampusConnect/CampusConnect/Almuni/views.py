@@ -7,3 +7,9 @@ from .models import Almuni
 def almuni(request):
     almuni = Almuni.objects.all()
     return render(request,'alumni.html',{'almuni':almuni})
+
+def alumniform(request):
+    return render(request,'alumniform.html')
+
+def alumniconnect(request):
+    return render(request,'alumniform.html')
