@@ -1,102 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AlmaConnect-Form</title>
-  </head>
-  <body>
-    <section class="alumni_form">
+{% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="{%static 'Alumni/alumniform.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <title>AlmaConnect-Form</title>
+  <style>
+    @media (max-width: 992px) {
+      section.heading header .toggle {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        background: url("{%static 'Events/menu.png'%}");
+        background-size: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: invert(1);
+        z-index: 11;
+        cursor: pointer;
+      }
+
+      section.heading header .toggle.active {
+        position: fixed;
+        right: 20px;
+        background: url("{%static 'Events/close.png'%}");
+        background-size: 25px;
+        background-position: center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+
+      section.footer {
+        padding: 20px;
+      }
+
+      section.footer .footer_center {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      section.footer .copyright {
+        padding: 0;
+      }
+
+      section.events_page_section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="heading">
+    <header>
+      <a href="#"><img src="{%static 'shop/logo.png'%}" class="logo" alt="" /></a>
+      <div class="toggle" onclick="toggleMenu()"></div>
+      <ul class="navigation">
+        <li><a href="/">Home</a></li>
+        <li><a href="#merchandise">Merchandise</a></li>
+        <li><a href="/blogs">Blogs</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </header>
+  </section>
+  <!-- form section -->
+
+  <section class="alumni_form">
+    <div class="left_container">
+      <h1>ALMACONNECT</h1>
+      <img src="{%static 'Alumni/login.svg'%}" alt="login" class="login_image">
+    </div>
+    <div class="right_container">
       <form action="" method="post">
+        <h1>We are privileged to get you back to your Alma Mater!!</h1>
+        <!-- Profile pic-->
+        <div class="row">
+          <div class="column">
+            <div class="circle">
+            <img class="profile-pic" src="{%static 'account/profile-image.jpg'%}">
+          </div>
+            <i class="fa-solid fa-camera-retro upload-button"></i>
+            <input type="file" name="profilepic" id="profilepic" accept="image/*" placeholder="Profile image" class="file-upload">
+            
+          </div>
+        </div>
+        <!-- College Profile -->
         <div class="row">
           <div class="column">
             <label>Full name</label>
             <div class="input_field">
-              <input
-                type="text"
-                name="full_name"
-                placeholder="Full Name"
-                required
-              />
+              <input type="text" name="full_name" placeholder="Full Name" required />
             </div>
           </div>
           <div class="column">
             <label>Department name</label>
             <div class="input_field">
-              <input
-                type="text"
-                name="full_name"
-                placeholder="Department"
-                required
-              />
+              <input type="text" name="full_name" placeholder="Department" required />
             </div>
           </div>
         </div>
+        <!-- COllege graduation details -->
         <div class="row">
           <div class="column">
             <label>Year of Graduation</label>
             <div class="input_field">
-              <input
-                type="text"
-                name="graduation_year"
-                placeholder="Graduation Year"
-                required
-              />
+              <input type="text" name="graduation_year" placeholder="Graduation Year" required />
             </div>
           </div>
           <div class="column">
             <label>USN</label>
             <div class="input_field">
-              <input
-                type="text"
-                name="seat_number"
-                placeholder="USN"
-                required
-              />
+              <input type="text" name="seat_number" placeholder="USN" required />
             </div>
           </div>
         </div>
+        <!-- Occupation and job title -->
         <div class="row">
-          <div class="column">
-            <label>Contact Number</label>
-            <div class="input_field">
-              <input
-                type="tel"
-                name="contact_number"
-                placeholder="Contact Number"
-                required
-              />
-            </div>
-          </div>
-        </div>
-         <div class="row">
-          <div class="column">
-            <label>Occupation</label>
-            <div class="input_field">
-              <input
-                type="text"
-                name="occupation"
-                placeholder="Occupation"
-                required
-              />
-            </div>
-          </div>
           <div class="column">
             <label>Job title</label>
             <div class="input_field">
-              <input
-                type="text"
-                name="job_title"
-                placeholder="Job Title"
-                required
-              />
+              <input type="text" name="job_title" placeholder="Job Title" required />
             </div>
           </div>
           <div class="column">
             <label>Company</label>
             <div class="input_field">
-                <input type="text" name="company" placeholder="Company" required>
+              <input type="text" name="company" placeholder="Company" required>
+            </div>
+          </div>
+        </div>
+        <!-- Mail and contact -->
+        <div class="row">
+          <div class="column">
+            <label>Contact Number</label>
+            <div class="input_field">
+              <input type="tel" name="contact_number" placeholder="Contact Number" required />
             </div>
           </div>
           <div class="column">
@@ -105,21 +149,51 @@
               <input type="email" name="email" placeholder="Email" required>
             </div>
           </div>
+        </div>
+        <!-- Social links -->
+
+        <div class="row">
           <div class="column">
             <label>LinkedIn</label>
-            <input type="url" name="linkedin" id="linkedin" placeholder="LinkedIn" required>
+            <div class="input_field">
+              <input type="url" name="linkedin" id="linkedin" placeholder="LinkedIn" required>
+            </div>
           </div>
           <div class="column">
             <label>Instagram</label>
-            <input type="url" name="instagram" id="instagram" placeholder="Instagram" required>
+            <div class="input_field">
+              <input type="url" name="instagram" id="instagram" placeholder="Instagram" required>
+            </div>
           </div>
-          <div class="column">
-            <label>Profile Image</label>
-            <input type="file" name="profilepic" id="profilepic">
-          </div>
-          </div>
-          <input class="button" type="submit" value="Sumbit" />
+        </div>
+        <!-- Submit button -->
+        <input class="button" type="submit" value="Sumbit" />
       </form>
-    </section>
-  </body>
+    </div>
+  </section>
+  <script>
+    $(document).ready(function () {
+  var readURL = function (input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $(".profile-pic").attr("src", e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  };
+
+  $(".file-upload").on("change", function () {
+    readURL(this);
+  });
+
+  $(".upload-button").on("click", function () {
+    $(".file-upload").click();
+  });
+});
+  </script>
+</body>
+
 </html>
