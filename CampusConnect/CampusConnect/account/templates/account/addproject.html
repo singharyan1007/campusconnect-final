@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {%load static%}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'account/profileform.css' %}">  
     <title>Profile - Add Projects</title>
 </head>
 <body>
     <div class="form_wrapper">
         <form action="post">
-            
+            <h1>Add your projects here</h1>
+            <p>Upload three of your best projects.</p>
+            <div class="row first-project">
+                <div class="column">
+                    <label>Upload banner for your project</label>
+                    <input type="file" name="profilepic" id="profilepic" accept="image/*" placeholder="Profile image" class="file-upload">
+                </div>
+                <div class="column">
+                    <label>Project Name</label>
+                    <div class="input_field">
+                        <input type="text" name="project" id="project" required>
+                    </div>
+                </div>
+                <div class="column">
+                    <label>Project Description </label>
+                    <div class="input_field">
+                        <textarea name="projectdesc" id="projectdesc" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="column">
+                    <label>Project Links</label>
+                    <div class="input_field">
+                        <label><i class="fa-brands fa-github"></i></label>
+                        <input type="url" name="githublink" id="githublink" placeholder="Github link of the project">
+                    </div>
+                    <div class="input_field">
+                        <label><i class="fa-solid fa-browser"></i></label>
+                        <input type="url" name="weblink" id="weblink" placeholder="Website link of the project if any">
+                    </div>
+                
+                </div>
+            </div>
+            <input class="button" type="submit" value="Sumbit" />
         </form>
     </div>
 </body>
