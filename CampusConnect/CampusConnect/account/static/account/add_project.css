@@ -143,6 +143,7 @@ form .btn{
     background-repeat: no-repeat;
     filter: invert(1);
     z-index: 11;
+    cursor: pointer;
   }
   .toggle.active {
     position: fixed;
@@ -151,6 +152,7 @@ form .btn{
     background-size: 25px;
     background-position: center;
     background-repeat: no-repeat;
+    cursor: pointer;
   }
   .heading header ul.navigation.active {
     position: fixed;

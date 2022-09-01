@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
   {% load static %}
   <head>
     <meta charset="UTF-8" />
@@ -11,51 +10,12 @@
       type="text/css"
       href="{%static 'Events/events.css' %}"
     />
-    <style>
-      @media (max-width: 992px) {
-        section.heading header .toggle {
-          position: relative;
-          width: 30px;
-          height: 30px;
-          background: url("{%static 'Events/menu.png'%}");
-          background-size: 30px;
-          background-position: center;
-          background-repeat: no-repeat;
-          filter: invert(1);
-          z-index: 11;
-          cursor: pointer;
-        }
-        section.heading header .toggle.active {
-          position: fixed;
-          right: 20px;
-          background: url("{%static 'Events/close.png'%}");
-          background-size: 25px;
-          background-position: center;
-          background-repeat: no-repeat;
-          cursor: pointer;
-        }
-        section.footer {
-          padding: 20px;
-        }
-        section.footer .footer_center {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        section.footer .copyright {
-          padding: 0;
-        }
-        section.events_page_section {
-          padding: 20px;
-        }
-      }
-    </style>
+
   </head>
   <body>
     <section class="heading">
       <header>
-        <a href="/"
-          ><img src="{%static 'shop/logo.png'%}" class="logo" alt=""
-        /></a>
+        <a href="#"><img src="{%static 'shop/logo.png'%}" class="logo" alt="" /></a>
         <div class="toggle" onclick="toggleMenu()"></div>
         <ul class="navigation">
           <li><a href="/">Home</a></li>
@@ -102,7 +62,6 @@
             </div>
           </li>
           {% endfor %}
-      <!-- The Modal -->
       
     </section>
 
@@ -178,13 +137,5 @@
     </script>
   </body>
 </html>
-=======
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-this is all events page.
-</body>
-</html>
->>>>>>> bb854fb4d1beac487a8d367f20698a4912d3d1bd
+
+

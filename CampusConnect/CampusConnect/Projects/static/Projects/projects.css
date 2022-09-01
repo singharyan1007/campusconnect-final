@@ -34,7 +34,7 @@ html {
   background: #fff;
   font-family: "Poppins", sans-serif;
 }
-section.heading header {
+.heading header {
   /* position: relative; */
 
   width: 100%;
@@ -43,35 +43,35 @@ section.heading header {
   justify-content: space-between;
   align-items: center;
 }
-section.heading header .logo {
+.heading header .logo {
   position: relative;
   max-width: 188px;
 }
-section.heading header ul {
+.heading header ul {
   position: relative;
   display: flex;
 }
-section.heading header ul li {
+.heading header ul li {
   list-style: none;
 }
-section.heading header ul li a {
+.heading header ul li a {
   display: inline-block;
   color: #000;
   font-weight: 500;
   text-decoration: none;
   margin-left: 40px;
 }
-section.heading header ul li a:hover {
+.heading header ul li a:hover {
   transform: scale(1.05);
 }
-/* -------------cards section----------- */
-section.events_page_section {
+/* -------------cards ----------- */
+.events_page_section {
   background: #040303;
   padding: 100px;
   width: 100%;
 }
 
-section.events_page_section p,
+.events_page_section p,
 h1 {
   color: white;
   text-align: center;
@@ -243,43 +243,43 @@ div.buttons {
   cursor: pointer;
 }
 
-/* ----------section-footer----------- */
-section.footer {
+/* -----------footer----------- */
+.footer {
   padding: 100px;
   width: 100%;
   background: #141414;
 }
-section.footer .footer_center {
+.footer .footer_center {
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-bottom: 20px;
 }
-section.footer .footer_center .logo {
+.footer .footer_center .logo {
   position: relative;
   max-width: 188px;
 }
-section.footer .footer_center .logo img {
+.footer .footer_center .logo img {
   width: 180px;
 }
-section.footer .logo p {
+.footer .logo p {
   color: #e2e2e2;
 }
 
-section.footer .footer_center ul li {
+.footer .footer_center ul li {
   list-style: none;
   text-align: left;
   margin-bottom: 5px;
 }
 
-section.footer .footer_center ul li a {
+.footer .footer_center ul li a {
   display: inline-block;
   color: #e2e2e2;
   font-weight: 500;
   text-decoration: none;
 }
 
-section.footer .footer_center h3 {
+.footer .footer_center h3 {
   font-size: 1.2rem;
   margin-bottom: 10px;
   color: #e2e2e2;
@@ -313,28 +313,26 @@ section.footer .footer_center h3 {
 .contact_us ul li img:hover {
   transform: scale(1.05);
 }
-section.footer .copyright {
+.footer .copyright {
   display: flex;
   color: #e2e2e2;
   padding: 2rem 2.5rem;
 }
 
 @media (max-width: 991px) {
-  section {
-    overflow-x: hidden;
-  }
-  section.heading header {
+
+  .heading header {
     padding: 20px;
   }
-  section.heading header .logo {
+  .heading header .logo {
     left: 46px;
     max-width: 55px;
     transform: scale(2.8);
   }
-  section.heading header ul {
+  .heading header ul {
     display: none;
   }
-  section.heading header .toggle {
+  .heading header .toggle {
     position: relative;
     width: 30px;
     height: 30px;
@@ -346,7 +344,7 @@ section.footer .copyright {
     z-index: 11;
     cursor: pointer;
   }
-  section.heading header .toggle.active {
+  .heading header .toggle.active {
     position: fixed;
     right: 20px;
     background: url("{%static 'Events/close.png'%}");
@@ -369,20 +367,10 @@ section.footer .copyright {
     z-index: 10;
     transition: 450ms;
   }
-  section.heading header ul li a {
+  .heading header ul li a {
     color: #000;
     font-size: larger;
     font-weight: 500;
   }
 }
-@media (min-width: 40rem) {
-  .cards_item {
-    width: 50%;
-  }
-}
 
-@media (min-width: 56rem) {
-  .cards_item {
-    width: 33.3333%;
-  }
-}
