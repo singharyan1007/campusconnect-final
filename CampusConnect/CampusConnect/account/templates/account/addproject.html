@@ -5,46 +5,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{%static 'account/profileform.css' %}">  
+    <link rel="stylesheet" href="{%static 'account/add_project.css' %}">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Profile - Add Projects</title>
 </head>
 <body>
-    <div class="form_wrapper">
-        <form action="/project/addproject/" method="post" enctype="multipart/form-data">
-            <h1>Add your projects here</h1>
-            <p>Upload three of your best projects.</p>
-            <div class="row first-project">
-                <div class="column">
-                    <label>Upload banner for your project</label>
-                    <input type="file" name="profilepic" id="profilepic" accept="image/*" placeholder="Profile image" class="file-upload">
-                </div>
-                <div class="column">
-                    <label>Project Name</label>
-                    <div class="input_field">
-                        <input type="text" name="project" id="project" required>
+    <section class="heading">
+        <header>
+          <a href="#"><img src="{%static 'shop/logo.png'%}" class="logo" alt="" /></a>
+          <div class="toggle" onclick="toggleMenu()"></div>
+          <ul class="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="#merchandise">Merchandise</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </header>
+      </section>
+
+      <section class="form_section">
+        <h1>Add your projects here</h1>
+        <div class="form_wrapper">
+            <form action="/project/addproject/" method="post" enctype="multipart/form-data">
+                <p>Upload three of your best projects.</p>
+                <div class="row first-project">
+                    <div class="column">
+                        <label><div class="btn">Upload banner image</div>
+                        <input type="file" name="bannerpic" id="bannerpic" accept="image/*" placeholder="Banner image" class="file-upload" >
+                    </label>
+                    </div>
+                    <div class="column">
+                        <label>Project Name</label>
+                        <div class="input_field">
+                            <input type="text" name="project" id="project" required>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <label>Project Description </label>
+                        <div class="input_field">
+                            <textarea name="projectdesc" id="projectdesc" cols="30" rows="10" ></textarea>
+                        </div>
+                    </div>
+                    <div class="column ">
+                        <label>Project Links</label>
+                        <div class="input_field links">
+                            <label><i class="fa-brands fa-github"></i></label>
+                            <input type="url" name="githublink" id="githublink" placeholder="Github link of the project">
+                        </div>
+                        <div class="input_field links">
+                            <label><i class="fa-solid fa-link"></i></label>
+                            <input type="url" name="weblink" id="weblink" placeholder="Website link of the project if any">
+                        </div>
+                    
                     </div>
                 </div>
-                <div class="column">
-                    <label>Project Description </label>
-                    <div class="input_field">
-                        <textarea name="projectdesc" id="projectdesc" cols="30" rows="10"></textarea>
-                    </div>
-                </div>
-                <div class="column">
-                    <label>Project Links</label>
-                    <div class="input_field">
-                        <label><i class="fa-brands fa-github"></i></label>
-                        <input type="url" name="githublink" id="githublink" placeholder="Github link of the project">
-                    </div>
-                    <div class="input_field">
-                        <label><i class="fa-solid fa-browser"></i></label>
-                        <input type="url" name="weblink" id="weblink" placeholder="Website link of the project if any">
-                    </div>
-                
-                </div>
-            </div>
-            <input class="button" type="submit" value="Sumbit" />
-        </form>
-    </div>
+                <label>
+                    <div class="btn">Submit</div>
+                    <input class="button" type="submit" value="Sumbit" />
+                </label>
+            </form>
+        </div>
+    </section>
+    <script>
+                function toggleMenu() {
+            var menuToggle = document.querySelector(".toggle");
+            var navigation = document.querySelector(".navigation");
+            navigation.classList.toggle("active");
+            menuToggle.classList.toggle("active");
+        }
+    </script>
 </body>
 </html>

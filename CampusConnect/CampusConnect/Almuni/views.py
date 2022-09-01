@@ -13,6 +13,7 @@ def alumniform(request):
 
 def alumniconnect(request):
     if request.method =='POST':
+        print (request.POST['seat_number'],)
         alumni = Almuni(
             name = request.POST['full_name'],
             designation = request.POST['job_title'],
