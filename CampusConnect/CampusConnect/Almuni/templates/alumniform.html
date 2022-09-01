@@ -52,6 +52,10 @@
       section.events_page_section {
         padding: 20px;
       }
+      section {
+    overflow-x: hidden;
+    padding: 20px 20px 120px;
+  }
     }
   </style>
 </head>
@@ -86,7 +90,7 @@
             <img class="profile-pic" src="{%static 'account/profile-image.jpg'%}">
           </div>
             <i class="fa-solid fa-camera-retro upload-button"></i>
-            <input type="file" name="profilepic" id="profilepic" accept="image/*" placeholder="Profile image" class="file-upload">
+            <input type="file" name="profilepic" id="profilepic" accept="image/*" "Profile image" class="file-upload">
             
           </div>
         </div>
@@ -95,13 +99,13 @@
           <div class="column">
             <label>Full name</label>
             <div class="input_field">
-              <input type="text" name="full_name" placeholder="Full Name" required />
+              <input type="text" name="full_name" required />
             </div>
           </div>
           <div class="column">
             <label>Department name</label>
             <div class="input_field">
-              <input type="text" name="full_name" placeholder="Department" required />
+              <input type="text" name="full_name" required />
             </div>
           </div>
         </div>
@@ -110,13 +114,13 @@
           <div class="column">
             <label>Year of Graduation</label>
             <div class="input_field">
-              <input type="text" name="graduation_year" placeholder="Graduation Year" required />
+              <input type="text" name="graduation_year"  required />
             </div>
           </div>
           <div class="column">
             <label>USN</label>
             <div class="input_field">
-              <input type="text" name="seat_number" placeholder="USN" required />
+              <input type="text" name="seat_number"  required />
             </div>
           </div>
         </div>
@@ -125,13 +129,13 @@
           <div class="column">
             <label>Job title</label>
             <div class="input_field">
-              <input type="text" name="job_title" placeholder="Job Title" required />
+              <input type="text" name="job_title"  required />
             </div>
           </div>
           <div class="column">
             <label>Company</label>
             <div class="input_field">
-              <input type="text" name="company" placeholder="Company" required>
+              <input type="text" name="company" required>
             </div>
           </div>
         </div>
@@ -140,13 +144,13 @@
           <div class="column">
             <label>Contact Number</label>
             <div class="input_field">
-              <input type="tel" name="contact_number" placeholder="Contact Number" required />
+              <input type="tel" name="contact_number"  required />
             </div>
           </div>
           <div class="column">
             <label>Mail</label>
             <div class="input_field">
-              <input type="email" name="email" placeholder="Email" required>
+              <input type="email" name="email"  required>
             </div>
           </div>
         </div>
@@ -156,13 +160,13 @@
           <div class="column">
             <label>LinkedIn</label>
             <div class="input_field">
-              <input type="url" name="linkedin" id="linkedin" placeholder="LinkedIn" required>
+              <input type="url" name="linkedin" id="linkedin"  required>
             </div>
           </div>
           <div class="column">
             <label>Instagram</label>
             <div class="input_field">
-              <input type="url" name="instagram" id="instagram" placeholder="Instagram" required>
+              <input type="url" name="instagram" id="instagram"  required>
             </div>
           </div>
         </div>
