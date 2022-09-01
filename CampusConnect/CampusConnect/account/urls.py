@@ -15,6 +15,7 @@ urlpatterns = [
     path('profileform', views.profileform, name="profile"),
     path('updateprofile/',views.updateprofile,name="update profile"),
     path('editprofile/',views.editprofile,name="edit profile"),
+    path('addprojects/',views.addprojects,name="addproject"),
     path('password_change/done/',
          auth_views.PasswordChangeDoneView.as_view(template_name='account/passwordchangedone.html'),
          name='password_change_done'),

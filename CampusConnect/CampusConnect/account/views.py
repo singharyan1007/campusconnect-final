@@ -114,6 +114,9 @@ def profiles(request,slug):
 def profileform(request):
     return render(request,'account/profileform.html')
 
+def addprojects(request):
+    return render(request,'account/addproject.html')
+
 def updateprofile(request):
     profile = Account.objects.filter(username=request.user)[0]
     if request.method=="POST":
