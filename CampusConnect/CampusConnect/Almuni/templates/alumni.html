@@ -92,6 +92,7 @@
       </div>
       <div class="cards_center">
         {% for i in almuni %}
+        {% if i.verified %}
         <ul class="cards">
           <li class="cards_item">
             <div class="card">
@@ -126,6 +127,7 @@
             </div>
           </li>
         </ul>
+        {% endif %}
        {% endfor %}
       </div>
     </section>
