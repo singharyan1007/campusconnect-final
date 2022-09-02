@@ -10,3 +10,6 @@ class projects(models.Model):
     description = RichTextUploadingField()
     github = models.URLField(max_length=500, default="", blank=True)
     deployed_link = models.URLField(max_length=500, default="", blank=True)
+
+    def __str__(self):
+        return self.name

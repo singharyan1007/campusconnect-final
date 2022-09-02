@@ -26,7 +26,8 @@
       <section class="form_section">
         <h1>Add your projects here</h1>
         <div class="form_wrapper">
-            <form action="/project/addproject/" method="post" enctype="multipart/form-data">
+            <form action="/projects/addproject" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <p>Upload three of your best projects.</p>
                 <div class="row first-project">
                     <div class="column">
@@ -42,9 +43,8 @@
                     </div>
                     <div class="column">
                         <label>Project Description </label>
-                        <div class="input_field">
-                            <textarea name="projectdesc" id="projectdesc" cols="30" rows="10" ></textarea>
-                        </div>
+                        {{form.media}}
+                        {{form.as_p}}
                     </div>
                     <div class="column ">
                         <label>Project Links</label>

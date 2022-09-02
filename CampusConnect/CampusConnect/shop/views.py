@@ -30,8 +30,8 @@ def index(request):
     print(date)
     if request.user.is_authenticated:
         profile = Account.objects.get(username=request.user)
-        print(profile.date_joined.strftime("%x"))
-        return render(request, 'shop/index.html',{'date':date,'profile':profile})
+        k = profile.date_joined.strftime("%x")
+        return render(request, 'shop/index.html',{'date':d,'profile':profile,'k':k})
     else:
         return render(request, 'shop/index.html',{'date':date})
 

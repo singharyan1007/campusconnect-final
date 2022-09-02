@@ -11,7 +11,7 @@ from django.db import IntegrityError
 from .models import Account
 from Blog.models import Blogpost
 from Projects.models import projects
-from .forms import AccountForm
+from .forms import AccountForm,projectForm
 # Create your views here.
 
 
@@ -103,9 +103,10 @@ def profile(request):
 
 
 def profiles(request,slug):
-    post = Blogpost.objects.filter(user=request.user)
-    profile = Account.objects.get(username=request.user)
-    project = projects.objects.filter(user=request.user)
+    profile = Account.objects.get(username=slug)
+    id = profile.id
+    post = Blogpost.objects.filter(user=id)
+    project = projects.objects.filter(user=id)
     if request.user==slug:
         return render(request, 'account/profile.html',{"profile": profile,"post":post,"project":project})
     else:
@@ -115,7 +116,8 @@ def profileform(request):
     return render(request,'account/profileform.html')
 
 def addprojects(request):
-    return render(request,'account/addproject.html')
+    form = projectForm()
+    return render(request,'account/addproject.html',{'form':form})
 
 def updateprofile(request):
     profile = Account.objects.filter(username=request.user)[0]
