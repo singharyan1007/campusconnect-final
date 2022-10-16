@@ -3,6 +3,8 @@
   {% load static %}
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clubs</title>
     <link
       rel="stylesheet"
@@ -15,40 +17,41 @@
     />
 
     <style>
-      @media (max-width: 992px) {
-        section.heading header .toggle {
-          position: relative;
-          width: 30px;
-          height: 30px;
-          background: url("{%static 'Events/menu.png'%}");
-          background-size: 30px;
-          background-position: center;
-          background-repeat: no-repeat;
-          filter: invert(1);
-          z-index: 11;
-          cursor: pointer;
-        }
-        section.heading header .toggle.active {
-          position: fixed;
-          right: 20px;
-          background: url("{%static 'Events/close.png'%}");
-          background-size: 25px;
-          background-position: center;
-          background-repeat: no-repeat;
-          cursor: pointer;
-        }
-        section.footer {
-          padding: 20px;
-        }
-        section.footer .footer_center {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        section.footer .copyright {
-          padding: 0;
-        }
-        section.events_page_section {
-          padding: 20px;
+        @media (max-width: 992px) {
+          section.heading header .toggle {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            background: url("{%static 'shop/menu.png'%}");
+            background-size: 30px;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: invert(1);
+            z-index: 11;
+            cursor: pointer;
+          }
+          section.heading header .toggle.active {
+            position: fixed;
+            right: 20px;
+            background: url("{%static 'shop/close.png'%}");
+            background-size: 25px;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+          }
+          section.footer {
+            padding: 20px;
+          }
+          section.footer .footer_center {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          section.footer .copyright {
+            padding: 0;
+          }
+          section.clubs_section {
+            overflow-x: hidden;
+      padding: 20px 20px 120px;
         }
       }
     </style>
@@ -68,7 +71,7 @@
         </ul>
       </header>
     </section>
-    <!-- ----------Clubs section---------- -->
+    
     <section class="clubs_section">
       <div class="clubs-center">
         <div class="card-section">
@@ -176,5 +179,13 @@
         <p>| © 2021 campusconnect.one | All Rights Reserved |</p>
       </div>
     </section>
+    <script>
+      function toggleMenu() {
+        var menuToggle = document.querySelector(".toggle");
+        var navigation = document.querySelector(".navigation");
+        navigation.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+      }
+    </script>
   </body>
 </html>

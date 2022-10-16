@@ -668,6 +668,14 @@ section.heading header ul li a{
   color: #e2e2e2;
   padding: 2rem 2.5rem;
 }
+.fade-in {
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+}
+
+.fade-in.appear {
+  opacity: 1;
+}
 /* -----------------Media query------------ */
 @media (max-width: 991px) {
   header {

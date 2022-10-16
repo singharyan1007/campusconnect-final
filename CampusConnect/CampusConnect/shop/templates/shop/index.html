@@ -1,171 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
-<head>
+  {% load static %}
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{%static 'shop/index.css' %}" />
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <style>
-        @media (max-width:991px){
-              .toggle {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    background: url("{%static 'shop/menu.png'%}");
-    background-size: 30px;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: invert(1);
-    z-index: 11;
-    cursor: pointer;
-  }
-  .toggle.active {
-    position: fixed;
-    right: 20px;
-    background: url("{%static 'shop/close.png'%}");
-    background-size: 25px;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-  }
+      @media (max-width: 991px) {
+        .toggle {
+          position: relative;
+          width: 30px;
+          height: 30px;
+          background: url("{%static 'shop/menu.png'%}");
+          background-size: 30px;
+          background-position: center;
+          background-repeat: no-repeat;
+          filter: invert(1);
+          z-index: 11;
+          cursor: pointer;
         }
+        .toggle.active {
+          position: fixed;
+          right: 20px;
+          background: url("{%static 'shop/close.png'%}");
+          background-size: 25px;
+          background-position: center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+        }
+      }
     </style>
 
     <title>CampusConnect</title>
-</head>
+  </head>
 
-<body>
-{% if user.is_authenticated and date == profile.date_joined %}
+  <body>
+    {% if user.is_authenticated and date == profile.date_joined %}
     <div class="notification-top-bar" id="notification-top-bar">
-        <div class="atomicons-close" id="atomicons-close" onclick="closeNotification()">
-            <i class='bx bx-x'></i>
-        </div>
-        <div class="notification_content">
-            <p>Welcome to CampusConnect. Please complete your profile. <small><a
-                        href="/account/profileform">Profile
-                        update</a></small></p>
-        </div>
+      <div
+        class="atomicons-close"
+        id="atomicons-close"
+        onclick="closeNotification()"
+      >
+        <i class="bx bx-x"></i>
+      </div>
+      <div class="notification_content">
+        <p>
+          Welcome to CampusConnect. Please complete your profile.
+          <small><a href="/account/profileform">Profile update</a></small>
+        </p>
+      </div>
     </div>
-{% endif %}
+    {% endif %}
 
     <section class="main">
-
-        <div class="circle"></div>
-        <header>
-            <a href="#"><img src="{%static 'shop/logo.png'%}" class="logo" alt="" /></a>
-            <div class="toggle" onclick="toggleMenu()"></div>
-            <ul class="navigation">
-                <li><a href="/">Home</a></li>
-                <li><a href="#merchandise">Merchandise</a></li>
-                <li><a href="/blogs">Blogs</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </header>
-        <div class="content">
-            <div class="textbox">
-                <h2>
-                    <span>Campus Connect</span><br />Integrating Campus to its people.
-                </h2>
-                <a href="#">Learn more</a>
-            </div>
-            <div class="imgBox">
-                <img src="{%static 'shop/bg.png'%}" alt="" class="campusconnect" />
-            </div>
-        </div>
-        <ul class="sci">
-            <li>
-                <a href="#"><img src="{%static 'shop/instagram.png'%}" alt="" /></a>
-            </li>
-            <li>
-                <a href="#"><img src="{%static 'shop/discord.png'%}" alt="" /></a>
-            </li>
-            <li>
-                <a href="#"><img src="{%static 'shop/linkedin.png'%}" alt="" /></a>
-            </li>
-            {% if user.is_authenticated %}
-            <li>
-                <a href="/account/profile"><img src="{%static 'shop/user.png'%}" alt="" /></a>
-            </li>
-            {% else %}
-            <li>
-                <a href="/account/login"><img src="{%static 'shop/user.png'%}" alt="" /></a>
-            </li>
-            {% endif %}
-            <li>
-                <a href="/cart"><img src="{%static 'shop/cart.png'%}" alt="" /></a>
-            </li>
+      <div class="circle"></div>
+      <header>
+        <a href="#"
+          ><img src="{%static 'shop/logo.png'%}" class="logo" alt=""
+        /></a>
+        <div class="toggle" onclick="toggleMenu()"></div>
+        <ul class="navigation">
+          <li><a href="/">Home</a></li>
+          <li><a href="#merchandise">Merchandise</a></li>
+          <li><a href="/blogs">Blogs</a></li>
+          <li><a href="#about">About</a></li>
         </ul>
-        <button onclick="topFunction()" id="myBtn" title="Go to top"><img src="{%static 'shop/rocket.png'%}" class="scroll_img"
-                alt=""></button>
+      </header>
+      <div class="content">
+        <div class="textbox">
+          <h2>
+            <span>Campus Connect</span><br />Integrating Campus to its people.
+          </h2>
+          <a href="#">Learn more</a>
+        </div>
+        <div class="imgBox">
+          <img src="{%static 'shop/bg.png'%}" alt="" class="campusconnect" />
+        </div>
+      </div>
+      <ul class="sci">
+        <li>
+          <a href="#"><img src="{%static 'shop/instagram.png'%}" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="{%static 'shop/discord.png'%}" alt="" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="{%static 'shop/linkedin.png'%}" alt="" /></a>
+        </li>
+        {% if user.is_authenticated %}
+        <li>
+          <a href="/account/profile"
+            ><img src="{%static 'shop/user.png'%}" alt=""
+          /></a>
+        </li>
+        {% else %}
+        <li>
+          <a href="/account/login"
+            ><img src="{%static 'shop/user.png'%}" alt=""
+          /></a>
+        </li>
+        {% endif %}
+        <li>
+          <a href="/cart"><img src="{%static 'shop/cart.png'%}" alt="" /></a>
+        </li>
+      </ul>
+      <button onclick="topFunction()" id="myBtn" title="Go to top">
+        <img src="{%static 'shop/rocket.png'%}" class="scroll_img" alt="" />
+      </button>
     </section>
     <section class="idea_us">
-        <div class="idea_center fade-in">
-            <img src="{%static 'shop/giffy.gif'%}" alt="" class="fade-in intro-img" />
-            <article class="header fade-in">
-                <h2>What is Campus Connect ?</h2>
-                <p>
-                    According to the founders <a href="#developers"><b>Aryan</b></a> and
-                    <a href="#developers"><b>Kartik</b></a> , Campus Connect is a centralised platform for all the
-                    information regarding a college. Initially built to sell the merchandise for their branch, Campus
-                    Connect evolved from just an idea to a full-blown project. The aim of CampusConnect is to let
-                    students have access to all the information about their college at one place. They aim to create a
-                    free, open and accessible space where anyone can contribute and grow. Let's build and grow in this
-                    space, together.
-                </p>
-            </article>
-        </div>
+      <div class="idea_center fade-in">
+        <img
+          src="{%static 'shop/giffy.gif'%}"
+          alt=""
+          class="fade-in intro-img"
+        />
+        <article class="header fade-in">
+          <h2>What is Campus Connect ?</h2>
+          <p>
+            According to the founders <a href="#developers"><b>Aryan</b></a> and
+            <a href="#developers"><b>Kartik</b></a> , Campus Connect is a
+            centralised platform for all the information regarding a college.
+            Initially built to sell the merchandise for their branch, Campus
+            Connect evolved from just an idea to a full-blown project. The aim
+            of CampusConnect is to let students have access to all the
+            information about their college at one place. They aim to create a
+            free, open and accessible space where anyone can contribute and
+           grow. Let's build and grow in this space, together.
+          </p>
+        </article>
+      </div>
     </section>
     <section class="goals">
-        <div class="home_about">
-            <div class="goals_center">
-                <img src="{%static 'shop/goals.gif'%}" alt="" class="intro-img">
-                <article class="goals_article">
-                    <h2>What we aim to achieve ?</h2>
-                </article>
-            </div>
-            <div class="columns">
-                <div class="col fade-in box">
-                    <span class="icon"><img src="{%static 'shop/campus.png'%}" alt=""></span>
-                    <h3>Enhancing campus space</h3>
-                    <p>Build a space of passionate minds who want to be contribute and be part of the changes occuring
-                        around them.</p>
-                </div>
-                <div class="col fade-in box">
-                    <span class="icon"><img src="{%static 'shop/strength.png'%}" alt=""></span>
-                    <h3>Networking</h3>
-                    <p>Connecting with different bright minds and help them learn and grow. And you surely can
-                        contribute to our cause too :)</p>
-                </div>
-                <div class="col fade-in box">
-                    <span class="icon"><img src="{%static 'shop/community.png'%}" alt=""></span>
-                    <h3>Strengthen the community</h3>
-                    <p>Learning and teaching simultaneously and working towards strengthening the community.</p>
-                </div>
-            </div>
+      <div class="home_about">
+        <div class="goals_center">
+          <img src="{%static 'shop/goals.gif'%}" alt="" class="intro-img" />
+          <article class="goals_article">
+            <h2>What we aim to achieve ?</h2>
+          </article>
         </div>
+        <div class="columns">
+          <div class="col fade-in box">
+            <span class="icon"
+              ><img src="{%static 'shop/campus.png'%}" alt=""
+            /></span>
+            <h3>Enhancing campus space</h3>
+            <p>
+              Build a space of passionate minds who want to be contribute and be
+              part of the changes occuring around them.
+            </p>
+          </div>
+          <div class="col fade-in box">
+            <span class="icon"
+              ><img src="{%static 'shop/strength.png'%}" alt=""
+            /></span>
+            <h3>Networking</h3>
+            <p>
+              Connecting with different bright minds and help them learn and
+              grow. And you surely can contribute to our cause too :)
+            </p>
+          </div>
+          <div class="col fade-in box">
+            <span class="icon"
+              ><img src="{%static 'shop/community.png'%}" alt=""
+            /></span>
+            <h3>Strengthen the community</h3>
+            <p>
+              Learning and teaching simultaneously and working towards
+              strengthening the community.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
     <!--------------------------------merch section----------------------------  -->
     <section class="merch-section merchandise" id="merchandise">
-        <div class="section-center fade-in">
-            <div class="section_center_grid">
-
-                <article class="header">
-                    <h2>Get your branch's custom merchandise</h2>
-                    <p>Well who doesn't want to flaunt their branch hoodies and tshirts.Customise and get your very own
-                        branch merchandise...</p>
-                </article>
-                <img src="{%static 'shop/ecommerce.gif'%}" alt="" class="intro-img">
-            </div>
-            <div class="services-center fade-in">
-                <div class="services">
-                    <span class="icon">
-                        <a href="/tshirts">
-                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 450.78 450.78"
-                                style="enable-background:new 0 0 450.78 450.78;" xml:space="preserve">
-                                <path d="M449.962,173.343L373.338,56.434c-0.521-0.796-1.26-1.427-2.128-1.817c0,0-108.317-49.534-113.373-47.804l-0.604,0.205
+      <div class="section-center fade-in">
+        <div class="section_center_grid">
+          <article class="header">
+            <h2>Get your branch's custom merchandise</h2>
+            <p>
+              Well who doesn't want to flaunt their branch hoodies and
+              tshirts.Customise and get your very own branch merchandise...
+            </p>
+          </article>
+          <img src="{%static 'shop/ecommerce.gif'%}" alt="" class="intro-img" />
+        </div>
+        <div class="services-center fade-in">
+          <div class="services">
+            <span class="icon">
+              <a href="/tshirts">
+                <svg
+                  version="1.1"
+                  id="Capa_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 450.78 450.78"
+                  style="enable-background: new 0 0 450.78 450.78"
+                  xml:space="preserve"
+                >
+                  <path
+                    d="M449.962,173.343L373.338,56.434c-0.521-0.796-1.26-1.427-2.128-1.817c0,0-108.317-49.534-113.373-47.804l-0.604,0.205
     	c-20.534,6.962-43.152,6.962-63.698-0.004l-0.593-0.201c-5.054-1.73-113.374,47.804-113.374,47.804
     	c-0.868,0.391-1.606,1.021-2.128,1.817L0.818,173.343c-1.286,1.962-1.035,4.553,0.602,6.231c1.3,1.334,32.496,32.807,89.373,45.624
     	c2.037,0.453,4.146-0.397,5.287-2.146l14.618-22.415l1.472,226.004c0.015,2.312,1.612,4.312,3.863,4.837
@@ -186,22 +229,32 @@
     	c4.906,15.168,19.949,40.434,65.649,40.434c45.692,0,60.733-25.268,65.638-40.434l72.689,32.746
     	c-2.294,17.095-12.994,89.971-32.032,118.045c-0.55,0.811-1.014,1.677-1.299,2.616c-0.116,0.382-0.199,0.765-0.201,1.08
     	L328.636,422.619z M361.16,214.652l-3.157-4.84c33.984-11.693,60.204-27.676,77.5-40.286l3.781,5.769
-    	C430.717,182.855,403.568,204.315,361.16,214.652z" />
-                            </svg>
-                        </a>
-                    </span>
-                    <h4> <a href="/tshirts">Tshirts</a></h4>
-                    <p>Get your custom college tshirts!!</p>
-                </div>
-                <div class="services">
-                    <span class="icon">
-                        <a href="/hoodies">
-                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 513.067 513.067"
-                                style="enable-background:new 0 0 513.067 513.067;" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <path d="M425.493,141.653c-1.387-1.28-2.987-2.24-4.907-2.667l-76.053-18.88c3.413-19.307,7.253-60.48-14.933-89.6
+    	C430.717,182.855,403.568,204.315,361.16,214.652z"
+                  />
+                </svg>
+              </a>
+            </span>
+            <h4><a href="/tshirts">Tshirts</a></h4>
+            <p>Get your custom college tshirts!!</p>
+          </div>
+          <div class="services">
+            <span class="icon">
+              <a href="/hoodies">
+                <svg
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  viewBox="0 0 513.067 513.067"
+                  style="enable-background: new 0 0 513.067 513.067"
+                  xml:space="preserve"
+                >
+                  <g>
+                    <g>
+                      <path
+                        d="M425.493,141.653c-1.387-1.28-2.987-2.24-4.907-2.667l-76.053-18.88c3.413-19.307,7.253-60.48-14.933-89.6
 			C314.133,10.24,289.6,0,256.533,0s-57.6,10.24-73.067,30.507c-22.187,29.12-18.347,70.293-14.933,89.6l-76.053,18.88
 			c-1.813,0.427-3.52,1.387-4.907,2.667C-36.16,261.973,7.253,493.547,9.173,503.36c0.96,5.013,10.453,9.707,10.453,9.707H95.04
 			c0,0,10.667-5.867,10.667-11.733c0-1.387-0.213-2.667-0.747-3.947c-31.147-78.293-7.147-160.427,12.907-207.253v200.533
@@ -219,75 +272,103 @@
 			c1.28,0.533,2.667,0.853,4.053,0.853c1.386,0,2.773-0.32,4.053-0.853c0.96-0.533,1.92-1.173,2.88-1.707l37.867-32.427
 			c4.373,13.013,17.493,59.733-1.28,105.6c-2.24,5.44,0.427,11.733,5.867,13.867c5.44,2.24,11.733-0.427,13.867-5.867
 			c25.387-61.973,1.067-122.88,0-125.44c-0.427-0.96-1.067-1.813-1.707-2.56l7.36-6.293c1.173,0.96,2.56,1.6,3.947,2.027
-			l83.307,20.587C512.96,259.2,490.88,448.107,484.373,490.667z" />
-                                    </g>
-                                </g>
-                                <g>
-                                    <g>
-                                        <path d="M331.2,384H182.187c-5.333,0-10.133,3.84-10.88,9.067c-0.96,6.613,4.16,12.267,10.56,12.267H330.88
-			c5.333,0,10.133-3.84,10.88-9.067C342.72,389.653,337.6,384,331.2,384z" />
-                                    </g>
-                                </g>
-                            </svg>
-                        </a>
-                    </span>
-                    <h4><a href="/hoodies">Hoodies</a></h4>
-                    <p>Get your custom college hoodies!!</p>
-                </div>
-            </div>
+			l83.307,20.587C512.96,259.2,490.88,448.107,484.373,490.667z"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="M331.2,384H182.187c-5.333,0-10.133,3.84-10.88,9.067c-0.96,6.613,4.16,12.267,10.56,12.267H330.88
+			c5.333,0,10.133-3.84,10.88-9.067C342.72,389.653,337.6,384,331.2,384z"
+                      />
+                    </g>
+                  </g>
+                </svg>
+              </a>
+            </span>
+            <h4><a href="/hoodies">Hoodies</a></h4>
+            <p>Get your custom college hoodies!!</p>
+          </div>
         </div>
-
+      </div>
     </section>
     <!-- ----------------------events section------------------------------- -->
     <section class="events_section">
-        <div class="events_center fade-in">
-            <img src="{%static 'shop/Events.gif'%}" alt="" class="intro-img">
-            <article class="events_article">
-                <h2>Don't miss out any of the events in the college.</h2>
-            </article>
+      <div class="events_center fade-in">
+        <img src="{%static 'shop/Events.gif'%}" alt="" class="intro-img" />
+        <article class="events_article">
+          <h2>Don't miss out any of the events in the college.</h2>
+        </article>
+      </div>
+      <div class="columns">
+        <div class="col fade-in box">
+          <img
+            src="{%static 'shop/orientation.jpg'%}"
+            alt=""
+            class="events_banner"
+          />
+          <div class="events_info">
+            <h3>Lorem ipsum dolor sit.</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
+              eius?z
+            </p>
+          </div>
+          <span class="button"><a href="">Register ></a></span>
         </div>
-        <div class="columns">
-            <div class="col fade-in box">
-                <img src="{%static 'shop/orientation.jpg'%}" alt="" class="events_banner">
-                <div class="events_info">
-                    <h3>Lorem ipsum dolor sit.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, eius?z</p>
-                </div>
-                <span class="button"><a href="">Register ></a></span>
-            </div>
-            <div class="col fade-in box">
-                <img src="{%static 'shop/orientation.jpg'%}" alt="" class="events_banner">
-                <div class="events_info">
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, inventore?</p>
-                </div>
-                <span class="button"><a href="">Register ></a></span>
-            </div>
-            <div class="col fade-in box">
-                <img src="{%static 'shop/orientation.jpg'%}" alt="" class="events_banner">
-                <div class="events_info">
-                    <h3>Lorem ipsum dolor sit amet.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quasi.</p>
-                </div>
-                <span class="button"><a href="">Register ></a></span>
-            </div>
+        <div class="col fade-in box">
+          <img
+            src="{%static 'shop/orientation.jpg'%}"
+            alt=""
+            class="events_banner"
+          />
+          <div class="events_info">
+            <h3>Lorem ipsum dolor sit amet.</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
+              inventore?
+            </p>
+          </div>
+          <span class="button"><a href="">Register ></a></span>
         </div>
-        <span class="button_explore"><a href="/events">Explore more events ></a></span>
-
+        <div class="col fade-in box">
+          <img
+            src="{%static 'shop/orientation.jpg'%}"
+            alt=""
+            class="events_banner"
+          />
+          <div class="events_info">
+            <h3>Lorem ipsum dolor sit amet.</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas,
+              quasi.
+            </p>
+          </div>
+          <span class="button"><a href="">Register ></a></span>
+        </div>
+      </div>
+      <span class="button_explore"
+        ><a href="/events">Explore more events ></a></span
+      >
     </section>
     <section class="clubs_section">
-        <div class="clubs_center fade-in">
-            <article class="clubs_article">
-                <h2>Interested in college clubs and their events ?</h2>
-                <p>In addition to education one of the major benefits of being a college student is the friendships and
-                    bonds you establish here. But the hectic academic life leaves no time for the students to socialise.
-                    So the alternative way through which students can meet new people and expand their network without
-                    infringing upon their studies is through joining the college clubs and participating in various
-                    events.</p>
-            </article>
-            <img src="{%static 'shop/Audiobook.gif'%}" alt="" class="intro-img">
-        </div>
-        <!-- <div class="columns">
+      <div class="clubs_center fade-in">
+        <article class="clubs_article">
+          <h2>Interested in college clubs and their events ?</h2>
+          <p>
+            In addition to education one of the major benefits of being a
+            college student is the friendships and bonds you establish here. But
+            the hectic academic life leaves no time for the students to
+            socialise. So the alternative way through which students can meet
+            new people and expand their network without infringing upon their
+            studies is through joining the college clubs and participating in
+            various events.
+          </p>
+        </article>
+        <img src="{%static 'shop/Audiobook.gif'%}" alt="" class="intro-img" />
+      </div>
+      <!-- <div class="columns">
             <div class="col fade-in box">
                 <img src="{%static 'shop/orientation.jpg'%}" alt="" class="club_banner">
                 <div class="club_info">
@@ -313,161 +394,232 @@
                 <span class="button_more"><a href="">Know more ></a></span>
             </div>
         </div> -->
-        <span class="button_explore"><a href="/clubs">Take a look at all the clubs ></a></span>
+      <span class="button_explore"
+        ><a href="/clubs">Take a look at all the clubs ></a></span
+      >
     </section>
     <!-- alumni section-------------------- -->
     <section class="alumni_section">
-        <div class="alumni_center">
-            <img src="{%static 'shop/Graduation.gif'%}" alt="" class="intro-img">
-            <article class="alumni_article">
-                <h2>AlmaConnect</h2>
-                <p>Our initiative to connect you to our alumni.</p>
-                <span class="alma_connect_btn"><a href="/almuni">Explore more about AlmaConnect ></a></span>
-            </article>
-        </div>
+      <div class="alumni_center">
+        <img src="{%static 'shop/Graduation.gif'%}" alt="" class="intro-img" />
+        <article class="alumni_article">
+          <h2>AlmaConnect</h2>
+          <p>Our initiative to connect you to our alumni.</p>
+          <span class="alma_connect_btn"
+            ><a href="/almuni">Explore more about AlmaConnect ></a></span
+          >
+        </article>
+      </div>
     </section>
     <section class="project_section">
-        <div class="project_center">
-            <article class="project_article">
-                <h2>Featured projects</h2>
-                <p>Building projects is the foremost way of learning any new technology or tech stack. Submit your
-                    proposal to us and we will present it to the world. </p>
-            </article>
-            <img src="{%static 'shop/Process.gif'%}" alt="" class="intro-img">
+      <div class="project_center">
+        <article class="project_article">
+          <h2>Featured projects</h2>
+          <p>
+            Building projects is the foremost way of learning any new technology
+            or tech stack. Submit your proposal to us and we will present it to
+            the world.
+          </p>
+        </article>
+        <img src="{%static 'shop/Process.gif'%}" alt="" class="intro-img" />
+      </div>
+      <h3 class="heading">Top three mind boggling projects...</h3>
+      <div class="columns fade-in">
+        <div class="col fade-in box">
+          <img src="{%static 'shop/orientation.jpg'%}" alt="" />
+          <div class="project_info">
+            <h3>Project Name</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Temporibus, dolor?
+            </p>
+          </div>
+          <span class="button_projects"><a href="">Read more ></a></span>
         </div>
-        <h3 class="heading">Top three mind boggling projects...</h3>
-        <div class="columns fade-in">
-            <div class="col fade-in box">
-                <img src="{%static 'shop/orientation.jpg'%}" alt="">
-                <div class="project_info">
-                    <h3>Project Name</h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, dolor?</p>
-                </div>
-                <span class="button_projects"><a href="">Read more ></a></span>
-            </div>
-            <div class="col fade-in box">
-                <img src="{%static 'shop/orientation.jpg'%}" alt="">
-                <div class="project_info">
-                    <h3>Project Name</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, facere.</p>
-                </div>
-                <span class="button_projects"><a href="">Read more ></a></span>
-            </div>
-            <div class="col fade-in box">
-                <img src="{%static 'shop/orientation.jpg'%}" alt="">
-                <div class="project_info">
-                    <h3>Project Name</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, porro.</p>
-                </div>
-                <span class="button_projects"><a href="">Read More ></a></span>
-            </div>
+        <div class="col fade-in box">
+          <img src="{%static 'shop/orientation.jpg'%}" alt="" />
+          <div class="project_info">
+            <h3>Project Name</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+              facere.
+            </p>
+          </div>
+          <span class="button_projects"><a href="">Read more ></a></span>
         </div>
-        <span class="button_explore"><a href="/projects">Explore all the projects ></a></span>
+        <div class="col fade-in box">
+          <img src="{%static 'shop/orientation.jpg'%}" alt="" />
+          <div class="project_info">
+            <h3>Project Name</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Doloremque, porro.
+            </p>
+          </div>
+          <span class="button_projects"><a href="">Read More ></a></span>
+        </div>
+      </div>
+      <span class="button_explore"
+        ><a href="/projects">Explore all the projects ></a></span
+      >
     </section>
     <section class="community_section">
-        <div class="community_center">
-            <img src="{%static 'shop/space.gif'%}" alt="" class="intro-img">
-            <article class="community_article">
-                <h2>Join our supportive community which is always evolving. </h2>
-                <p>Contribute to our cause of building an ever evolving and rapidly growing space by joining our
-                    supportive communities.</p>
-                <div class="icons">
-                    <a href="" class="whatsapp">
-                        <button class="whatsapp_btn btn">
-                            <span class="icon_btn">
-                                <img src="{%static 'shop/whatsappsvg.svg'%}" alt="" class="whatsapp_icon">
-                            </span>
-                            Join Whatsapp
-                        </button>
-                    </a>
-                    <a href="" class="discord">
-                        <button class="discord_btn btn">
-                            <span class="icon_btn">
-                                <img src="{%static 'shop/discordsvg.svg'%}" alt="" class="discord_icon">
-                            </span>
-                            Join Discord
-                        </button>
-                    </a>
-                </div>
-            </article>
-        </div>
+      <div class="community_center">
+        <img src="{%static 'shop/space.gif'%}" alt="" class="intro-img" />
+        <article class="community_article">
+          <h2>Join our supportive community which is always evolving.</h2>
+          <p>
+            Contribute to our cause of building an ever evolving and rapidly
+            growing space by joining our supportive communities.
+          </p>
+          <div class="icons">
+            <a href="" class="whatsapp">
+              <button class="whatsapp_btn btn">
+                <span class="icon_btn">
+                  <img
+                    src="{%static 'shop/whatsappsvg.svg'%}"
+                    alt=""
+                    class="whatsapp_icon"
+                  />
+                </span>
+                Join Whatsapp
+              </button>
+            </a>
+            <a href="" class="discord">
+              <button class="discord_btn btn">
+                <span class="icon_btn">
+                  <img
+                    src="{%static 'shop/discordsvg.svg'%}"
+                    alt=""
+                    class="discord_icon"
+                  />
+                </span>
+                Join Discord
+              </button>
+            </a>
+          </div>
+        </article>
+      </div>
     </section>
     <section class="footer">
-        <div class="footer_center">
-            <div class="logo">
-                <img src="{%static 'shop/logo-black.png'%}" alt="">
-                <p> Campus Connect is a centralised platform for all the information regarding a college.</p>
-            </div>
-            <div class="company">
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="">Team</a></li>
-                    <li><a href="">Privacy Policy</a></li>
-                    <li><a href="">Terms and Conditions</a></li>
-                </ul>
-            </div>
-            <div class="links">
-                <h3>Useful links</h3>
-                <ul>
-                    <li><a href="/tshirts">Tshirts</a></li>
-                    <li><a href="/hoodies">Hoodies</a></li>
-                    <li><a href="/blogs">Blogs</a></li>
-                </ul>
-            </div>
-            <div class="contact_us">
-                <h3>Contact Us</h3>
-                <a href="mailto: campus.connect.contact@gmail.com">campus.connect.contact@gmail.com</a>
-                <ul>
-                    <li>
-                        <a href="#"><img src="{%static 'shop/instagram.png'%}" alt="" /></a>
-                      </li>
-                      <li>
-                        <a href="#"><img src="{%static 'shop/discord.png'%}" alt="" /></a>
-                      </li>
-                      <li>
-                        <a href="#"><img src="{%static 'shop/linkedin.png'%}" alt="" /></a>
-                      </li>
-                      <li>
-                        <a href="#"><img src="{%static 'shop/whatsapp.png'%}" alt="" /></a>
-                      </li>
-                </ul>
-            </div>
+      <div class="footer_center">
+        <div class="logo">
+          <img src="{%static 'shop/logo-black.png'%}" alt="" />
+          <p>
+            Campus Connect is a centralised platform for all the information
+            regarding a college.
+          </p>
         </div>
-        <div class="copyright">
-            <p>| © 2021 campusconnect.one | All Rights Reserved |</p>
+        <div class="company">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="">Team</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms and Conditions</a></li>
+          </ul>
         </div>
+        <div class="links">
+          <h3>Useful links</h3>
+          <ul>
+            <li><a href="/tshirts">Tshirts</a></li>
+            <li><a href="/hoodies">Hoodies</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="contact_us">
+          <h3>Contact Us</h3>
+          <a href="mailto: campus.connect.contact@gmail.com"
+            >campus.connect.contact@gmail.com</a
+          >
+          <ul>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/instagram.png'%}" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"><img src="{%static 'shop/discord.png'%}" alt="" /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/linkedin.png'%}" alt=""
+              /></a>
+            </li>
+            <li>
+              <a href="#"
+                ><img src="{%static 'shop/whatsapp.png'%}" alt=""
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>| © 2021 campusconnect.one | All Rights Reserved |</p>
+      </div>
     </section>
     <script>
-        function toggleMenu() {
-            var menuToggle = document.querySelector(".toggle");
-            var navigation = document.querySelector(".navigation");
-            navigation.classList.toggle("active");
-            menuToggle.classList.toggle("active");
-        }
-        //Get the button
-        var mybutton = document.getElementById("myBtn");
+      function toggleMenu() {
+        var menuToggle = document.querySelector(".toggle");
+        var navigation = document.querySelector(".navigation");
+        navigation.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+      }
+      //Get the button
+      var mybutton = document.getElementById("myBtn");
 
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function () { scrollFunction() };
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction();
+      };
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
+      function scrollFunction() {
+        if (
+          document.body.scrollTop > 20 ||
+          document.documentElement.scrollTop > 20
+        ) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
         }
+      }
 
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-        //Closing notification bar
-        function closeNotification() {
-            document.getElementById('notification-top-bar').style.height = "0px";
-        }
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+      //Closing notification bar
+      function closeNotification() {
+        document.getElementById("notification-top-bar").style.height = "0px";
+      }
+
+      // Trying lazy loading with intersection observers
+      const faders = document.querySelectorAll(".fade-in");
+     
+
+      const appearOptions = {
+        threshold: 0,
+        rootMargin: "0px 0px -250px 0px",
+      };
+
+      const appearOnScroll = new IntersectionObserver(function (
+        entries,
+        appearOnScroll
+      ) {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          } else {
+            entry.target.classList.add("appear");
+            appearOnScroll.unobserve(entry.target);
+          }
+        });
+      },
+      appearOptions);
+
+      faders.forEach((fader) => {
+        appearOnScroll.observe(fader);
+      });
     </script>
-</body>
-
+  </body>
 </html>

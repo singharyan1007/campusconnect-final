@@ -17,7 +17,7 @@
     />
     <style>
       @media (max-width: 991px) {
-        .toggle {
+        section.heading header .toggle {
           position: relative;
           width: 30px;
           height: 30px;
@@ -29,7 +29,7 @@
           z-index: 11;
           cursor: pointer;
         }
-        .toggle.active {
+        section.heading header .toggle.active {
           position: fixed;
           right: 20px;
           background: url("{%static 'shop/close.png'%}");
@@ -143,5 +143,13 @@
         <p>| © 2021 campusconnect.one | All Rights Reserved |</p>
       </div>
     </section>
+    <script>
+          function toggleMenu() {
+        var menuToggle = document.querySelector(".toggle");
+        var navigation = document.querySelector(".navigation");
+        navigation.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+      }
+    </script>
   </body>
 </html>
