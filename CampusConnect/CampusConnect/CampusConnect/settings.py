@@ -97,7 +97,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'campusconnect',
         'USER' : 'postgres',
-        'PASSWORD': 'Kartik@142',
+        'PASSWORD': 'Aryan@1007',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -225,7 +225,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "campus.connect.contact@gmail.com"
-EMAIL_HOST_PASSWORD = "knfguasqmhppavbq"
+EMAIL_HOST_PASSWORD = "vavfcwngzrsyvtvd"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
