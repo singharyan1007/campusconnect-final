@@ -88,7 +88,7 @@ textarea{
 }
 
 .size-checkbox{
-    -webkit-appearance: none;
+    --webkit-appearance: none;
     width: 100px;
     height: 40px;
     border-radius: 5px;
@@ -117,7 +117,7 @@ textarea{
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
-    -webkit-appearance: none;
+    --webkit-appearance: none;
     margin: 0;
 }
 
@@ -152,6 +152,6 @@ input::-webkit-inner-spin-button{
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
-    -webkit-appearance: none;
+    --webkit-appearance: none;
     margin: 0;
 }

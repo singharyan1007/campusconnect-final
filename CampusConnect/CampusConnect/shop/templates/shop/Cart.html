@@ -12,35 +12,46 @@
     />
 
     <link rel="stylesheet" type="text/css" href="{%static 'shop/cart.css' %}" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{%static 'shop/index.css' %}"
-    />
     <style>
               @media (max-width:991px){
-                  .toggle {
-        position: relative;
-        width: 30px;
-        height: 30px;
-        background: url("{%static 'shop/menu.png'%}");
-        background-size: 30px;
-        background-position: center;
-        background-repeat: no-repeat;
-        filter: invert(1);
-        z-index: 11;
-        cursor: pointer;
-      }
-      .toggle.active {
-        position: fixed;
-        right: 20px;
-        background: url("{%static 'shop/close.png'%}");
-        background-size: 25px;
-        background-position: center;
-        background-repeat: no-repeat;
-        cursor: pointer;
-      }
+                section.heading header .toggle {
+          position: relative;
+          width: 30px;
+          height: 30px;
+          background: url("{%static 'shop/menu.png'%}");
+          background-size: 30px;
+          background-position: center;
+          background-repeat: no-repeat;
+          filter: invert(1);
+          z-index: 11;
+          cursor: pointer;
+        }
+        section.heading header .toggle.active {
+          position: fixed;
+          right: 20px;
+          background: url("{%static 'shop/close.png'%}");
+          background-size: 25px;
+          background-position: center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+        }
+      section.footer {
+          padding: 20px;
+        }
+        section.footer .footer_center {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        section.footer .copyright {
+          padding: 0;
+        }
+      
+        div.cart-section {
+    overflow-x: hidden;
+    padding: 20px 20px 120px;
+   
     }
+  }
     </style>
     <title>CampusConnect : Cart</title>
   </head>
@@ -59,7 +70,6 @@
         </ul>
       </header>
     </section>
-    <section class="intro" style="height: 20vh"></section>
     <div class="cart-section" id="cartlist">
       <div class="product-list">
         <p class="section-heading">your cart</p>
@@ -209,6 +219,12 @@
           },
         });
       });
+           function toggleMenu() {
+        var menuToggle = document.querySelector(".toggle");
+        var navigation = document.querySelector(".navigation");
+        navigation.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+      }
     </script>
   </body>
 </html>

@@ -3,19 +3,68 @@
   {% load static %}
   <head>
     <meta charset="UTF-8" />
-    <title>Events</title>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      rel="stylesheet"
-      type="text/css"
-      href="{%static 'Events/events.css' %}"
-    />
+    rel="stylesheet"
+    type="text/css"
+    href="{%static 'Events/events.css' %}"
+  />
+  <link
+    href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+    <title>Events</title>
+    <style>
+      @media (max-width: 992px) {
+        section.heading header .toggle {
+          position: relative;
+          width: 30px;
+          height: 30px;
+          background: url("{%static 'shop/menu.png'%}");
+          background-size: 30px;
+          background-position: center;
+          background-repeat: no-repeat;
+          filter: invert(1);
+          z-index: 11;
+          cursor: pointer;
+        }
+        section.heading header .toggle.active {
+          position: fixed;
+          right: 20px;
+          background: url("{%static 'shop/close.png'%}");
+          background-size: 25px;
+          background-position: center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+        }
+        section.footer {
+          padding: 20px;
+        }
+        section.footer .footer_center {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        section.footer .copyright {
+          padding: 0;
+        }
+        section.events_page_section {
+          padding: 20px;
+        }
+        section.events_page_section {
+    overflow-x: hidden;
+    padding: 20px 20px 120px;
+  }
+      }
+    </style>
 
   </head>
   <body>
     <section class="heading">
       <header>
-        <a href="#"><img src="{%static 'shop/logo.png'%}" class="logo" alt="" /></a>
+        <a href="#"
+          ><img src="{%static 'shop/logo.png'%}" class="logo" alt=""
+        /></a>
         <div class="toggle" onclick="toggleMenu()"></div>
         <ul class="navigation">
           <li><a href="/">Home</a></li>
@@ -36,21 +85,20 @@
       </div>
       <div class="cards_center">
         <ul class="cards">
-          {% for i in event %}
           <li class="cards_item">
             <div class="card">
               <div class="card_image">
-                <img src="/media/{{i.main_image}}" />
+                <img src="#" />
               </div>
               <div class="card_content">
-                <h2 class="card_title">{{i.name}}</h2>
+                <h2 class="card_title"></h2>
                 <p class="card_text">
-                  {{i.description}}
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, iste?
                 </p>
                 <div class="buttons">
-                  <a href="{{i.link}}">
+                  <a href="#">
                     <button class="btn card_btn" type="button">Register ></button></a>
-                  <a href="/events/event_details/{{i.name}}"><button
+                  <a href="#"><button
                     class="btn card_btn modal_btn"
                     id="myBtn"
                     type="button"
@@ -61,7 +109,6 @@
               </div>
             </div>
           </li>
-          {% endfor %}
       
     </section>
 

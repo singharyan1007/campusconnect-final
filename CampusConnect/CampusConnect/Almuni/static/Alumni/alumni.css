@@ -198,27 +198,7 @@ div.card_content div.buttons {
 }
 
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  text-align: right;
-  font-size: 28px;
-  font-weight: bold;
-  padding-bottom: 0.5rem;
-  padding-right: 1.5rem;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-
-
-
-
+/* Footer content */
 section.footer {
   padding: 100px;
   width: 100%;
