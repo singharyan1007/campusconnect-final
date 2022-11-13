@@ -126,7 +126,7 @@ def updateprofile(request):
         while len(foi)<=5:
             foi.append('')
         profile.image = request.FILES.get('image')
-        profile.profil_image = request.FILES.get('image')
+        profile.profile_image = request.FILES.get('image')
         profile.name = request.POST['name']
         profile.surname = request.POST['surname']
         profile.mjskl = request.POST['mjskl']
@@ -152,7 +152,7 @@ def editprofile(request):
     if form.is_valid():
         post_item=form.save(commit=False)
         if request.FILES.get("image"):
-            image = request.FILES.get("banner")
+            image = request.FILES.get("image")
             post_item.profile_image=image
             post_item.image=image
         post_item.save()
