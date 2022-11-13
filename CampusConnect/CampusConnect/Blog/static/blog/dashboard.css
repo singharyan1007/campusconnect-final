@@ -5,12 +5,17 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-.heading{
-    color:rgba(0,0,0,0.5);
-    font-size: 60px;
+body{
+    background: #141414;
+    color: white;
+}
+
+.section_heading{
     text-align: center;
-    position: relative;
-    margin: 100px 0 20px;
+    text-transform: capitalize;
+    font-size: 2.5em;
+    color: white;
+    padding-top: 10px;
 }
 .btn.grey{
     background: #c5c5c5;

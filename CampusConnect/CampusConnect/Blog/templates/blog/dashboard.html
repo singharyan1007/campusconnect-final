@@ -12,25 +12,57 @@
   <link rel="stylesheet" type="text/css" href="{%static 'blog/home.css' %}" />
   <link rel="stylesheet" type="text/css" href="{%static 'blog/dashboard.css' %}" />
   <style>
-    a.logo {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.5rem;
-      font-weight: 600;
+    @media (max-width: 992px) {
+        section.heading header .toggle {
+          position: relative;
+          width: 30px;
+          height: 30px;
+          background: url("{%static 'shop/menu.png'%}");
+          background-size: 30px;
+          background-position: center;
+          background-repeat: no-repeat;
+          filter: invert(1);
+          z-index: 11;
+          cursor: pointer;
+        }
+        section.heading header .toggle.active {
+          position: fixed;
+          right: 20px;
+          background: url("{%static 'shop/close.png'%}");
+          background-size: 25px;
+          background-position: center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+      }
+      section {
+    overflow-x: hidden;
+  }
+  section.heading header {
+    padding: 20px;
+  }
     }
-  </style>
+</style>
 </head>
 
 <body>
-  <nav class="navbar">
-    <a href="/" class="logo">CampusConnect</a>
-    <ul class="links-container">
-      <li class="link-item"><a href="/blogs" class="link">home</a></li>
-      <li class="link-item"><a href="/account/logout" class="link">logout</a></li>
-    </ul>
-  </nav>
+  <section class='heading'>
+    <header>
+      <a href='/'><img src="{%static 'shop/logo.png' %}" class="logo"/></a>
+      <div class="toggle" onClick="toggleMenu()"></div>
+      <ul class="navigation">
+              <li><a href="/blogs">Home</a></li>
+              {% if user.is_authenticated %}
+              <li><a href="/blogs/dashboard">Dashboard</a></li>
+              <li><a href="/account/logout">Logout</a></li>
+              {% else %}
+               <li><a href="/account/login">Login</a></li>
+              {% endif %}
+          </ul>
+    </header>
+  </section>
   <!-- Dashboard -->
-  <h1 class="heading">your blogs</h1>
+ 
+  <h1 class="section_heading">your blogs</h1>
 
   <!-- blog section -->
 
